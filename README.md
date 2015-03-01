@@ -1,99 +1,57 @@
-# capstone-project
-CourseBridge: a Tailored Coursera Course Recommender Based on Your Profile and a Job Posting
+# CourseBridge: a Tailored Coursera Course Recommender Based on Your Profile and a Job Posting
 
-## Overview -- Project Proposals
+## Summary
+The NLP based web application is aimed to help people who are looking for jobs. In addition to helping them to identify their most matched qualifications for a job posting they are interested in, the application can also help them to be better prepared for this job by offering a list of Coursera courses based on their missing skill sets for the very same job.
 
-During the course you will complete an individual capstone project that will serve as the key evidence for employers about what you're capable of building.
+I might include edX courses if I have enough time.
 
-A few tips we've heard in the past from project reviewers
-* Make sure the final of your project includes evidence of results (Blog w/ code snippets, iPython Notebook, or organized Github).
-* Something about your project should be very challenging
-* Your project should have plausible business value 
-* Make your analysis novel
+## Motivation
+Checking a job posting, matching the qualifications, identifying missing skills and figuring out a resources to makeup the needed skills are very typical procedures of job hunters.
 
+The app is meant to make the process a little more efficient and less tedious, which can be useful to direct people to find resources on Coursera and to help them to sharpen the skills needed for their desired position.
 
-### Technology
-* Chartio - make all kinds of charts
-* Mortar
-* yHat - host models
-* Keen.io - back end for analytics apps
-* Domino - run code on bigger hardware
+## Data Sources
+Getting Coursera course feature data is easy, I scraped the data using their API.
 
-## Collections of Datasets
+I have the data stored in MongoDB. Each doc has course name and a short description for the course.
 
-* Jonathan's Favorites: [data collections](https://github.com/Jay-Oh-eN/datasets)
-* [100 Interesting Data Sets for Statistics](rs.io/2014/05/29/list-of-data-sets.html)
-* Quora answers to [Where can I find large data sets open to the public?](http://www.quora.com/Where-can-I-find-large-datasets-open-to-the-public)
+```python
+{
+"_id" : ObjectId("54e95b788d804728dd351bb4"),
+"language" : "en",
+"links" : {
+},
+"shortName" : "perceptivehunting",
+"shortDescription" : "The rich history of wildlife management and recreational hunting plays an important role in the evolving face of conservation. This course will explore the ethics, science, and democracy of conservation, hunting, and The Land Ethic in North America.",
+"id" : 2163,
+"name" : "The Land Ethic Reclaimed: Perceptive Hunting, Aldo Leopold, and Conservation"
+}
+```
 
-## Selected Alumni Examples
+Description will be used for similarity check.
 
-* [Curious Quoran](https://github.com/asna1005/curious_quoran) - A cross-resource recommendation engine for Quora users, discovering hidden gems of interest on Coursera, iTunes Podcast and Project Gutenberg.
-* [Always Remember](https://github.com/djsensei/AlwaysRemember)
-* [RideMeter](https://github.com/jyt109/RideShare) - Measuring the value of shared rides
-* [A Music Recommender for Groups](https://github.com/bsbell21/capstoneproject) - Make a playlist for a group of Spotify users that takes into account all their preferences
-* [ZipLee](https://github.com/liljonnystyle/sf_traffic) - A vehicular routing app for specific driving behaviors
-* [Gravitty](https://github.com/ericjeske/gravitty) - Detecting latent, behavior-driven communities in a twitter user's followers
-* [Expert Engine](https://github.com/eburnsid/expert-engine) - A search engine for patent attorneys to find the most appropriate people to serve as expert witnesses
-* [Yelp Summarization Miner](https://github.com/Fossj117/opinion-mining) - An automated system that generates a digestable, human-understandable, and browsable summary of the opinions expressed in a corpus of Yelp reviews about a particular restaurant
-* [A Search Engine for State Legislation](https://github.com/amentch/state_legislation) - Collecting state-level bills into a database to make them searchable 
-* [Code Name Jeeves](https://github.com/nyghtowl/Code_Name_Jeeves) - Email natural language classifier that finds messages where a meeting location needs to be defined
-* [Zipflights](https://github.com/BradAJ/zipflights) - data-driven web app for saving money on airline tickets.
-* [Virtual Ebert](https://github.com/LanceBarnett/VirtualEbert) - Predicting Roger Ebert movie ratings thru collaborative filter and supervised learning techniques
-* [San Francisco Neighborhood Recommender](http://ansonwhitmer.tumblr.com/post/76570597222/sf-hoods-project) - a similarity matrix based on metrics of neighborhood similarity in San Francisco
-* [Pop Art](www.mickaellegal.com/pop-art-series) - analysis of Reddit's popular articles presented with d3 visualizations
+Name and shortName will be used to to construct the hot links for the recommendation page, it has a pattern of
+baseurl "www.coursera.org/course"  + shortName. For exmple: [https://www.coursera.org/course/perceptivehunting] (https://www.coursera.org/course/perceptivehunting)
 
-## Additional Examples
+## Process
+There are 2 webpages for the app:
 
-Blogs have some great examples of projects.
+* Input page
 
-* [SelfieCity](http://selfiecity.net/)
-* [Data Science for Social Good](https://github.com/dssg)
-* [Predictive Bikeshare rebalancing](https://github.com/dssg/bikeshare)
-* [World Bike Share map](http://oliverobrien.co.uk/bikesharemap/)
-* [Khan Academy Student Mastery](http://david-hu.com/2011/11/02/how-khan-academy-is-using-machine-learning-to-assess-student-mastery.html)
-* [Code for America](http://www.codeforamerica.org/apps/)
-* Mortar Data: GitRec
-	* [http://blog.mortardata.com/post/53294300530/gitrec-your-personalized-github-repo-recommender](http://blog.mortardata.com/post/53294300530/gitrec-your-personalized-github-repo-recommender)
-	* [http://blog.mortardata.com/post/58246541129/recommender-tips-product-is-more-important-than-math](http://blog.mortardata.com/post/58246541129/recommender-tips-product-is-more-important-than-math)
-	* [http://blog.mortardata.com/post/56423476538/recommender-tips-bayesian-estimation-and-logistic-scalin](http://blog.mortardata.com/post/56423476538/recommender-tips-bayesian-estimation-and-logistic-scalin)
-* [Wolfram Facebook Analysis](http://blog.wolfram.com/2013/04/24/data-science-of-the-facebook-world/
-)
-* [Flowing Data](http://projects.flowingdata.com/)
-* [SF Film locations](http://no2147483647.wordpress.com/2013/08/22/the-best-photography-spots-in-san-francisco-what-data-can-tell-you/)
-* [Jake Hofman](http://jakehofman.com/?feature=code)
-* [Drew Conway](http://drewconway.com/the-lab/)
-* [Citi Bike](http://www.newyorker.com/sandbox/business/citi-bike.html)
-* [Live Bus](http://pasdechocolat.com/2013/07/20/livebus-with-meteor-and-d3/)
-* [Census Map](http://bmander.com/dotmap/index.html#7.00/34.739/-96.572)
-* [Twitter Map](https://www.mapbox.com/blog/visualizing-3-billion-tweets/)
-* [Democracy and Light](http://www-personal.umich.edu/~brianmin/Min_DemocLight_04282008.pdf)
-* [Insight Data Science](http://www.insightdatascience.com/fellows.html)
+	2 text boxes for pasting the resume and job posting. Urls pointing to resume and job posting are also acceptable.
+The background will be a heat map for the courses based on their subjects, which shows some insight
+of what are taught currently.
 
+* Output page
 
-## Proposals
+	The top qualifications you have for the job and a recommender of courses based on your missing skills.
 
-Now that we've had so much fun with structured curriculum, it's time to shift gears into personal projects. These project proposals are meant to:
-* Serve as a record for your ideas
-* Allow ZA instructors to evaluate, critique, and provide feedback
-* Simulate real-world scenarios where new data science initiatives require justification and defense
+* Implementation plan
 
-#### Preliminary-proposal
-
-Preliminary proposals serve to oraganize all of your initial ideas and will allow us to provide feedback on each of them before you narrow it down to one... and it is always great to have backups!
-
-Please follow the following template for your project proposals:
-
-1. Name, Date.
-2. High level description of the project: what question or problem are you addressing?
-3. How are you presenting your work? (web app, visualization, presentation/slides, etc.)
-4. Whats your next step?
-5. What are your data sources? 
-
-#### Final Proposal
-For the final proposal, you will pick one of your initial ideas and elaborate on it.  In addition to everything listed in the preliminary proposal, please add the following:
-
-1. Describe your techniques: break the data pipeline into portions and describe each one.
-2. Can you anticipate problems, what are they, do you need to overcome them now? How do you overcome them?
-3. How far do you anticipate to take the project in the allotted time frame? 
-4. Any other repos, libraries and other tools that you're considering using? Are you citing them? Are you acknowledging them for their contribution?
-5. Do you have the dataset already? If not, what is involved in obtaining it?
+	1. Build a TfidfVectorizer using the Coursera course shortDescription.
+	2. Parsing the job posting and form the requirements into a list of requirement. Build tfidf for the list.
+	3. Build the tfidf for the resume.
+	4. Run similarity check against the resume tfidf for each requirement.
+	5. Display top 2 qualifications.
+	6. The missing set are the ones with very low similarity. Those will be used to form a list for querys for Coursera data.
+	7. Search the Coursera data with the queries and return list of items with highest similarity.
