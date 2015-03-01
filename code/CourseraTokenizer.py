@@ -84,9 +84,7 @@ if __name__ == '__main__':
         print requirement
         print get_top_courses(cosine_similarities[i], 3, coursera_courses)
         print
-    #save the coursera_tokenizer and coursera_vectors
     with open('../data/coursera_tokenizer.pkl', 'wb') as handle:
         pkl.dump(coursera_tokenizer, handle)
     with open('../data/coursera_vectors.pkl', 'wb') as handle:
         pkl.dump(coursera_vectors, handle)
-
