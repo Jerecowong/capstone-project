@@ -1,0 +1,6 @@
+Computer Science degree and at least 5 years’ experience, or PhD or equivalent knowledge.
+Strong skills in coding in Java or C/C++, algorithms, and system design.
+Formal knowledge and hands-on experience with natural language processing, text mining and machine learning algorithm implementation.
+Experience with Ontologies development like dbpedia, Owlim, Yago, Wordnet
+Academic knowledge with machine learning technologies like SVM, Naïve Bayes, Neural Networks, Clustering algorithms and recommendation systems. Experience with related libraries libsvm, Apache Mahout and any related algorithm development is highly desirable
+Excellent communication skills and drive to get things done. 

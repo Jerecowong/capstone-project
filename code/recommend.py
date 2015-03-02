@@ -35,7 +35,7 @@ class Recommender(object):
     Recommender class 
     '''
 
-    def __init__(self):
+    def __init__(self, ngram_range=(1, 1), use_stem=False, use_tagger=False):
         '''
         pass
         '''
@@ -48,11 +48,13 @@ class Recommender(object):
         self.resume_vector = None
         self.requirement_vectors = None
         self.coursera_courses = None
+        self.ngram_range = ngram_range
+        self.use_tagger = use_tagger
 
     def initialize_attributes(self, resume, requirements, coursera_vectorizer=None, coursera_vectors=None):
         self.resume = [resume]
         self.requirements = [requirement for requirement in requirements.split('\n')]
-        coursera_tokenizer = CourseraTokenizer()
+        coursera_tokenizer = CourseraTokenizer(ngram_range=self.ngram_range)
         coursera_tokenizer.set_df('../data/courses_desc.json')
         coursera_tokenizer.set_vectors()
         self.coursera_vectorizer = coursera_tokenizer.get_vectorizer()

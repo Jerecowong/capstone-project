@@ -25,9 +25,9 @@ def get_bottom_requirements(lst, n, requirements):
     Given a list of cosine similarities, find the indices with the highest n values.
     Return the courses for each of these indices.
     '''
-    print "in get_bottom_requirements"
-    print lst
-    print np.argsort(lst)[0:n]
+    #print "in get_bottom_requirements"
+    #print lst
+    #print np.argsort(lst)[0:n]
     return [requirements[i] for i in np.argsort(lst)[0:n]]
 
 class Recommender(object):
@@ -35,7 +35,7 @@ class Recommender(object):
     Recommender class 
     '''
 
-    def __init__(self):
+    def __init__(self, ngram_range=(1, 1), use_stem=False, use_tagger=False):
         '''
         pass
         '''
@@ -48,11 +48,13 @@ class Recommender(object):
         self.resume_vector = None
         self.requirement_vectors = None
         self.coursera_courses = None
+        self.ngram_range = ngram_range
+        self.use_tagger = use_tagger
 
     def initialize_attributes(self, resume, requirements, coursera_vectorizer=None, coursera_vectors=None):
         self.resume = [resume]
         self.requirements = [requirement for requirement in requirements.split('\n')]
-        coursera_tokenizer = CourseraTokenizer()
+        coursera_tokenizer = CourseraTokenizer(ngram_range=self.ngram_range)
         coursera_tokenizer.set_df('../data/courses_desc.json')
         coursera_tokenizer.set_vectors()
         self.coursera_vectorizer = coursera_tokenizer.get_vectorizer()
@@ -70,14 +72,15 @@ class Recommender(object):
     def find_missing_skills(self):
         cosine_similarities = linear_kernel(self.requirement_vectors, self.resume_vector)
         self.missing_requirements = get_bottom_requirements(cosine_similarities.flatten(), 2, self.requirements)
+        return self.missing_requirements
 
     def recommend(self):
         '''
         INPUT: np array of distances
         OUTPUT: names of recommendations
         '''
-        print self.requirements
-        print self.missing_requirements
+        #print self.requirements
+        #print self.missing_requirements
         missing_requirements_vectors = self.coursera_vectorizer.transform(self.missing_requirements)
         cosine_similarities = linear_kernel(missing_requirements_vectors, self.coursera_vectors)
         for i, requirement in enumerate(self.missing_requirements):

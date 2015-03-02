@@ -1,0 +1,80 @@
+Brian Kennedy
+Software Engineer
+
+San Francisco, CA
+Work Experience
+Mobile Software Engineer
+TRIALOG - Paris (75)
+March 2014 to September 2014
+Paris, France 
+Led design and development of Android applications from concept to execution for €2.9M real-time and embedded systems software contract engineering company. 
+ 
+• Designed and developed functional healthcare application for data exchange between care providers and patients including creating use cases, wireframes, writing Java code, and constructing system architecture. 
+• Reverse-engineered and integrated UniversAAL middleware into Android app enabling P2P communication between mobile devices; improved latest release by providing feedback to developers. 
+• Improved product quality of existing Android middleware and resolved recurring problems. 
+• Introduced OAuthentication 2.0 (OAuth) security process using RESTful web API.
+Project Lead | Software Engineer
+CONSERVATOIRE NATIONAL DES ARTS ET METIERS - Paris (75)
+March 2014 to May 2014
+Paris, France 
+"Smart Locker" Master's thesis project with integrated Arduino board utilizing BlueTooth Low Energy to interact with Android phone app. Resolved secure key exchange issues, wrote Android, PHP, database, and cloud application. 
+ 
+• Developed working prototype selected as use case in "Towards Mobile Cloud and Internet of Things Applications" article submitted to The International Conference on Ambient Systems, Networks, and Technologies 2015 conference in London. 
+ 
+Brian Patrick Kennedy kennedy.brianpatrick@gmail.com
+Research Assistant
+THE AMERICAN UNIVERSITY OF PARIS - Paris - Paris (75)
+2013 to 2014
+France 
+Worked with academic members of PRIPARE project developing privacy and security-by-design software and systems engineering methodology. Drafted research papers, meeting minutes, and organized partner contributions. 
+ 
+• Improved productivity and efficiency of 15-person plenary meeting, organizing and managing agenda, vendors, and all logistics with positive member feedback.
+Project Lead | Design Coordinator
+THE AMERICAN UNIVERSITY OF PARIS - Paris - Paris (75)
+March 2013 to May 2013
+Paris, France 
+• Developed scalable web-based interactive video system with Flash. Utilizing numerous sensors, system interacts with students based on circumstances such as external audio, keyboard input, and facial recognition. 
+• Full project at: http://ac.aup.edu/a78500/index.html
+Engineer
+3D Printing Project - Paris (75)
+September 2012 to November 2012
+Paris, France 
+• Built Printrbot 3D kit into integrated hardware and software unit. Loaded Printrun control software onto Printrbot and utilized AutoDesk and Slic3r design software to build 3D printed objects.
+Education
+Master of Science in Computer Science
+Le Conservatoire National des Arts et Métiers - Paris (75)
+2014
+Bachelor of Science in Computer Science
+American University of Paris - Paris (75)
+2013
+Bachelor of Arts in Comparative Literature
+American University of Paris - Paris (75)
+2013
+Minor in Latin
+American University of Paris - Paris (75)
+2013
+Skills
+Software Development, Software Design, Embedded and Mobile Systems, Internet of Things, Android Development, and Java
+Links
+http://www.linkedin.com/in/brianpk
+Additional Information
+Areas of Expertise 
+ 
+➢ Embedded and Mobile Software Development 
+➢ Human-centered UX/UI Design 
+➢ Iterative Prototyping, Project Management 
+ 
+➢ Android and Java Expertise 
+➢ Leadership and Presentation Skills 
+➢ International Markets 
+ 
+TECHNICAL SKILLS 
+ 
+Languages: Java, Android, JSON, XML: Proficient ; JavaScript, HTML5/CSS, PHP, SQL: Familiarity 
+Applications: Adobe Creative Cloud, Eclipse, Git, and MS Visual Studio 
+Operating Systems: Linux, Windows 7/8, Mac OS 
+ 
+ADDITIONAL SKILLS 
+ 
+Languages: English, French 
+Other: Public speaking, 6+ years of theater performance

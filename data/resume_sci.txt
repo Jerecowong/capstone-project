@@ -1,0 +1,73 @@
+Christopher Cruz
+Sr. Associate Development Scientist
+
+Albany, CA
+A position leveraging my expertise in the development of mammalian cell culture processes for both fed-batch and perfusion systems in research and clinical manufacturing environments.
+Work Experience
+Sr. Associate Development Scientist
+Bayer HealthCare - Berkeley, CA
+February 2003 to September 2014
+• Design and performance of upstream process development work; clone selection, shake flask evaluation, cell banking and scale up, bioreactor inoculation, operation, maintenance, and primary isolation 
+• Perform numerous fed-batch and continuous fermentation experiments with mammalian cells (CHO, BHK) 
+• Execute design of experiments (DOE) to determine suitable fermentation process parameter ranges, perform technology transfer to cGMP operations, hands-on setup and execution of cGMP continuous and fed-batch clinical campaigns to generate Phase I/III material, author internal reports summarizing development activities 
+• Expert in the use of single-use bioreactors (SUBs) as a part of upstream development and clinical manufacturing 
+• Co-led upstream team to develop the pilot implementation of a fully integrated electronic lab notebook (ELN) platform covering all development unit operations 
+• Create and maintain fermentation templates for data entry, calculation of mass balances, cell specific rates, visualization and ease data export for further processing with software like JMP and Tableau 
+• Design of bioreactor controllers for use in research and clinical environments, serve as primary contact with vendors and procurement to communicate requirements, review P&ID, perform Factory Acceptance Tests (FAT), ensure systems are delivered on time and operate as intended 
+• Initiate a project utilizing PAT methodology to integrate an auto-sampler into fermenter control software and programmed an expert system to automate tasks, standardize decision making, and deliver consistent bioreactor performance 
+• Supported conformance deviation investigations by providing SME support
+Associate Process Development Scientist
+Adecco (temporary at Bayer HealthCare, Berkeley, CA) - Berkeley, CA
+September 2002 to February 2003
+Responsibilities 
+• Performed all tasks associated with upstream development; vial thaw, cell scale-up, small scale cell culture maintenance, bioreactor setup and inoculation, continuous fermentation, ultra-filtration
+Manufacturing Associate I
+Ortho-McNeil Pharmaceutical - Drug Delivery Division - Redwood City, CA
+July 2001 to September 2002
+• Executed Design of Experiments, Process Qualification and Validation (DOE, PQ, PV) 
+• 1+ year of cGMP experience in an FDA regulated environment
+Manufacturing Associate I
+Lab Support (temporary at Ortho-McNeil Pharmaceutical, Redwood City, CA) - Redwood City, CA
+July 2001 to July 2002
+Responsibilities 
+• Performed troubleshooting of the manufacturing process, maintained SOPs and reviewed batch records
+Undergraduate Research
+Case Western Reserve University, Biomedical Optics Laboratory - Cleveland, OH
+May 1999 to May 2001
+• Measured the effect of glucose concentrations on scattering coefficients of Optical Coherence Tomography (OCT) for the development of a non-invasive glucose measurement probe
+Education
+M.S. in Biological Sciences
+California State University East Bay - Hayward, CA
+2012 to 2015
+B.S. in Biomedical Engineering
+Case Western Reserve University - Cleveland, OH
+1997 to 2001
+Publications
+Single-Use Bioreactors for the Rapid Production of Pre-Clinical and Clinical Biopharmaceuticals
+http://www.biopharminternational.com/biopharm/Peer-Reviewed+Research/Single-Use-Bioreactors-for-the-Rapid-Productionof-/ArticleStandard/Article/detail/856816?contextCategoryId=50125
+October 1, 2014
+Decreased pCO2 accumulation by eliminating bicarbonate addition to high-density cultures.
+http://onlinelibrary.wiley.com/doi/10.1002/bit.21116/abstract
+December 14, 2006
+Additional Information
+Presentations 
+ 
+• Cruz, C., Heidemann, R. (2013) Development of a Single-Use Upstream Platform for Clinical Manufacturing. 3rd Upstream Technology Forum, September 9-10, Goettingen, Germany. 
+ 
+• Jayapal, K.P., Cruz, C., and Goudar, C.T. (2011) Estimating Respiration Rates for Mammalian Cells in Perfusion Culture. American Chemical Society Spring 2011 National Meeting, March 27–31, Anaheim, CA. 
+ 
+• Liu, M., Long, E., Cruz, C., Ibarra, R., Zou, G. and Goudar, C.T. (2010) Design Space Studies for High-Density Perfusion Cultivation of Mammalian Cells. American Chemical Society Spring 2010 National Meeting, March 21–25, San Francisco, CA. 
+ 
+• Cruz, C., Johnson, A., Heidemann, R. and Goudar, C. (2010) Integrated and fully customizable control of high density mammalian cell perfusion cultures. 12th Cell Culture Engineering (CCE) Conference, April 25-30, Banff, Alberta, Canada. 
+ 
+• Cruz, C., Johnson, A. and Goudar, C. (2010) Automating Mammalian Cell Culture: Closing the Operator Gap. 239th American Chemical Society (ACS) Meeting, March 21-25, San Francisco, CA, USA. 
+ 
+• Joeris, K., Goudar, C.T., Cruz, C., Burnett, M., Zhang, C. and Konstantinov, K. (2007) Estimating OUR and CER in high density mammalian cell perfusion cultures using novel off-gas sensors. 20th ESACT Meeting, June 17-20, Dresden, Germany. 
+ 
+• Cruz, C., Joeris, K., Goudar, C., Zhang, C. and Konstantinov, K. (2007) Real-Time OUR Measurement in Mammalian Cell Cultures Based on a Global Mass Balance Approach. 20th European Society for Animal Cell Technology (ESACT) Meeting, June 17-20, Dresden, Germany. 
+ 
+• Goudar, C.T., Joeris, K., Cruz, C., Zhang, Z. and Konstantinov, K. (2007) OUR and CER Estimation in high density mammalian cell perfusion cultures. 10th International IFAC Symposium on Computer Applications in Biotechnology, June 4–6, Cancun, Mexico 
+ 
+• Goudar, C.T., Long, E., Cruz, C., Matanguihan, R., Zhang, C., Piret, J.M. and Konstantinov K. (2005) Dissolved CO2 reduction in high-density mammalian cell cultures through NaHCO3 elimination. 229th ACS National Meeting, March 13-17, San Diego, CA. 
+ 
+• Goudar, C.T., Long, E., Cruz, C., Mantanguihan, R., Zhang, C., Piret, J. and Konstantinov K. (2004) Strategies for Dissolved CO2 Reduction in High-Density Mammalian Cell Cultures. 12th International Biotechnology Symposium and Exhibition, October 17-22, Santiago, Chile.

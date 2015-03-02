@@ -1,0 +1,97 @@
+Mahdi Azarafrooz
+PhD in Elec.& Comp. Eng.
+
+Sunnyvale, CA
+At the moment my research/industry interests include the application of online machine learning and randomized algorithms in complex networks. Ideally networks where the classical methods of analyzing the generated data fails.
+Work Experience
+MTS2 | Data Scientist
+Pivotal Software Inc. | Real Time Intelligence R&D - Palo Alto, CA
+June 2014 to Present
+Responsibilities 
+I am responsible for the design and implementation of stream mining solutions suitable for the fast data generated from Telecommunications industry. This experience has exposed me to various software platforms including in-memory computing and high performance Inter-Thread Messaging Libraries . More importantly it has improved my knowledge of fast data analytics and its practical limitations. At Pivotal it has been an honor to be a part of highly distributed and interactive team of agile developers, whom are located around the world. This environment has fostered my communication skills to grow exponentially.  
+ 
+Accomplishments 
+Research and development of suitable stream mining solutions for the Pivotal RTI4T including: 
+a) Designed and implemented a distributed online learning mechanism for detecting the spatio-temporal patterns of cell tower data: In order to address the runtime scalability of the established model, a novel exact solution to the learning framework has been proposed which adjusts the parameters of the distributed environment along with the learning process. 
+b) Created and tested a python execution of a novel algorithm for detecting Delay Sensitive Applications: The main learning feature is the stochastic properties of inter-arrival time of the TCP packets which has been extracted using a memory efficient onepass Haar wavelet decomposition. 
+ 
+Skills Used 
+Hierarchical Dirichlet Process, IHMM, Gibbs/Metropolis Sampling, Distributed/Online learning, Java Multi-thread Programming
+Research Scientist
+Business Intell. and Analytic Dep. of Stevens Inst.
+March 2014 to August 2014
+Accomplishments 
+Wrote a research paper focused on the design of suitable ensemble learning modules in the streaming environments based on MOA project. 
+ 
+Skills Used 
+Java, Machine learning in streaming environments, MOA ( Weka)
+Summer intern
+Niksun Inc - Princeton, NJ
+May 2013 to August 2013
+Accomplishments 
+I was part of a team that worked on an automated testing framework for the cloud automation project.  
+ 
+Skills Used 
+Java, Hibernate, Unix and Shell script.
+Research and teaching assistant
+Stevens Inst. of Tech - Hoboken, NJ
+2010 to 2013
+Accomplishments 
+Finished my thesis was on “Game Theory, Learning and Complexity Decomposition in Cognitive Networks”.
+Research Engineer
+Research valley at Tehran university
+2009 to 2010
+Tehran Iran 
+ 
+Consulting project on cryptographic foundations in wireless systems.
+Education
+Ph.D. in Electrical and Computer Engineering
+Stevens Institute of Technology - Hoboken, NJ
+MSc in IT
+Iran University of Science and Technology - Tehrān
+Skills
+INTERMEDIATE LEVEL: Java, Python, Matlab, MOA(Weka) BASIC LEVEL: Spring Framework/Integration, GemFire (In-memory Computing), LMAX Reactor (fast data applications), AMQP, git, Linux
+Links
+http://scholar.google.com/citations?user=XlKEVUEAAAAJ&hl=en&authuser=1
+http://www.linkedin.com/profile/view?id=219224588&trk=nav_responsive_tab_profile_pic
+https://sites.google.com/site/azarafroozgraphgametheory/
+Additional Information
+Published papers  
+ 
+M.Azarafrooz and M.Daneshamand, "Meta expert learning and efficient pruning for evolving data streams", To appear on IEEE Internet of Things Journal 2014. 
+ 
+M.Azarafrooz and R.Chandramouli, "Distributed Spectrum Sharing Using Congestion Advertisement", EAI Transactions on Wireless Spectrum 2014. 
+ 
+M. Azarafrooz, R. Chandramouli and K. P. Subbalakshmi "Reciprocity, Fairness and Learning in Medium Access Control Games", Journal of Computer and Communications (COMCOM), 2014. 
+ 
+M. Azarafrooz, R. Chandramouli and K. P. Subbalakshmi “ Reciprocity and Fairness in Random Access Game”, ICCCN 2013, Bahamas.  
+ 
+M. Azarafrooz, R. Chandramouli, “ Distributed Learning in Secondary Spectrum Sharing Graphical Game”, IEEE GLOBECOM 2011, Texas.  
+ 
+M. Azarafrooz and A. Falahati,“ An Improved Multi-path Key Establishment under REM in Wireless Sensor Networks”, ICSNC 2010, France.  
+ 
+M. Azarafrooz and A. Falahati,“ Mitigation of control channel jamming via combinatorial key distribution”, ISGS 2010, Portugal  
+ 
+H. Jamali, M. Azarafrooz and B. Abolhassani,“ A New Adaptive Power Optimization Scheme for Target Tracking Wireless Sensor Networks”, IEEE SIEA 2009  
+ 
+Selected projects: 
+Designed and Implemented the distributed learning methods in Markov random fields: 
+ 
+I have Implemented and designed two novel algorithms: Responsive learning automata and exponential no-regret learning algorithms. I have simulated the suitability of these algorithms in Markov random fields using Matlab simulation environment. 
+ 
+Simulated the influence matrix of learning interactions: 
+ 
+In this project I simulated the idea of Gibbs sampling in learning of the maximum independent sets of a graph, using Java environment. The mathematical skills related to this project include maximum entropy, maximum likelihood and variational method optimizations.  
+ 
+Provided a predictive/analytical model for a competitive reality TV Show: 
+ 
+Python software was used to extract the popularity index of the players of the game using the tweet records. I formed a game theoretical framework to justify the outcomes of the show. More analytical study was conducted over the collect data using R. 
+ 
+Designed and simulated a novel low complexity cryptographic algorithm: 
+ 
+A novel low complexity technique ( both communication and computational complexity ) for designing high entropic keyestablishment schemes has been proposed and the performance has been simulated via Matlab simulation environment. 
+ 
+RECENT ACADEMIC ACTIVITIES: 
+Program Committee of Big Data and Stream Analytics Workshop @ SIAM DATA MINING 2015: https://sites.google.com/site/sdm2015bsa/ 
+Online Instructor for Introduction to multimedia networking course. 
+http://www.webcampus.stevens.edu/Mahdi-Azarafrooz-Faculty.aspx

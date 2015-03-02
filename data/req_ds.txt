@@ -1,0 +1,10 @@
+A passion for making sense of lots of unstructured data
+Experience with NLP, classification, graph mining, and/or recommender systems
+Proficient with SQL and experience with one or more DB query clients (e.g. MySQL)
+Solid experience in Java and a scripting language (Python, Perl, etc.)
+Bonus: Experience with R, D3, Map/Reduce, HIVE/Pig, MongoDB
+Bonus: Experience with applying solutions to languages such as Japanese, German, French
+MS or PhD in a technical degree
+Enthusiasm for working in a fun, dynamic startup environment
+You like to shop online and you don't mind getting reimbursed to buy more stuff!
+You can code in the presence of flying ping pong balls.

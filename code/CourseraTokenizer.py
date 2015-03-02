@@ -6,7 +6,7 @@ import cPickle as pkl
 
 
 class CourseraTokenizer(object):
-    def __init__(self, use_stem=False):
+    def __init__(self, ngram_range=(1,1), use_stem=False):
         '''
         INPUT:
         - ngram_range:
@@ -16,7 +16,7 @@ class CourseraTokenizer(object):
         - df:
         OUTPUT: None
         '''
-        self.ngram_range = (1, 1)
+        self.ngram_range = ngram_range
         self.max_features = 1000
         self.vectorizer = TfidfVectorizer(stop_words='english', ngram_range=self.ngram_range,
                                     max_features=self.max_features)

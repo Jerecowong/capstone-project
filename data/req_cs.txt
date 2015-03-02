@@ -1,0 +1,9 @@
+BS or MS in Computer Science or relevant experience
+3+ years’ experience building world class, public facing web applications. Please provide a portfolio of sites/applications you have built.
+Proficient in (X)HTML, AJAX, the DOM, JavaScript and JS libraries, HTTP, HTML5, CSS3, W3C standards and compliance requirements
+Expertise in MVC frameworks like Angular JS, Backbone, Dojo, etc.
+Expertise in Ruby/ROR, PHP, Java, or other programming languages
+Experience and understanding of service oriented architectures (SOA), Object
+Oriented Design/Development, Continuous Integration a must.
+In depth knowledge and application of industry best practices in rich web applications towards creating world class web experiences
+Extremely detail oriented. Knowledge of cross browser issues. Excellent debugging and trouble shooting skills.
