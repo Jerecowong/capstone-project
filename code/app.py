@@ -29,9 +29,9 @@ def recommend():
     recommender.initialize_attributes(resume, requirements)
     recommender.vectorize_resume()
     recommender.vectorize_requirements()
-    recommender.find_missing_skills()
+    missing_requirements = recommender.find_missing_skills()
     course_recommedations = recommender.recommend()
-    return render_template('recommend.html', data=course_recommedations)
+    return render_template('recommend.html', data=zip(missing_requirements, course_recommedations))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=7777, debug=True)
