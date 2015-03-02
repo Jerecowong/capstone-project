@@ -25,9 +25,9 @@ def get_bottom_requirements(lst, n, requirements):
     Given a list of cosine similarities, find the indices with the highest n values.
     Return the courses for each of these indices.
     '''
-    print "in get_bottom_requirements"
-    print lst
-    print np.argsort(lst)[0:n]
+    #print "in get_bottom_requirements"
+    #print lst
+    #print np.argsort(lst)[0:n]
     return [requirements[i] for i in np.argsort(lst)[0:n]]
 
 class Recommender(object):
@@ -77,8 +77,8 @@ class Recommender(object):
         INPUT: np array of distances
         OUTPUT: names of recommendations
         '''
-        print self.requirements
-        print self.missing_requirements
+        #print self.requirements
+        #print self.missing_requirements
         missing_requirements_vectors = self.coursera_vectorizer.transform(self.missing_requirements)
         cosine_similarities = linear_kernel(missing_requirements_vectors, self.coursera_vectors)
         for i, requirement in enumerate(self.missing_requirements):
