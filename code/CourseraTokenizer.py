@@ -49,6 +49,9 @@ class CourseraTokenizer(object):
     def get_course_shortnames(self):
         return self.df['shortName']
 
+    def get_course_names(self):
+        return self.df['name']
+
 if __name__ == '__main__':
     coursera_tokenizer = CourseraTokenizer()
     coursera_tokenizer.set_df('../data/courses_desc.json')

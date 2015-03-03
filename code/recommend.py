@@ -7,7 +7,7 @@ from sklearn.metrics.pairwise import linear_kernel
 from sklearn.metrics.pairwise import cosine_similarity
 from CourseraTokenizer import CourseraTokenizer
 
-def get_top_courses(lst, n, courses):
+def get_top_courses(lst, n, courses, course_names):
     '''
     to build the cousera collection in mongodb which contain all the
     INPUT: LIST, INTEGER, LIST
@@ -16,7 +16,7 @@ def get_top_courses(lst, n, courses):
     Given a list of cosine similarities, find the indices with the highest n values.
     Return the courses for each of these indices.
     '''
-    return [(courses[i], lst[i])for i in np.argsort(lst)[-1:-n - 1:-1]]
+    return [(courses[i], course_names[i], lst[i])for i in np.argsort(lst)[-1:-n - 1:-1]]
 
 def get_bottom_requirements(lst, n, requirements):
     '''
@@ -38,7 +38,7 @@ def extract_nouns(sentence):
     '''
     text = nltk.word_tokenize(re.sub(r'[^\x00-\x7F]+', ' ', sentence))
     word_tags = nltk.pos_tag(text)
-    return ' '.join([word_tag[0] for word_tag in word_tags if (word_tag[1] == 'NNS' or word_tag[1] =='NN')])
+    return ' '.join([word_tag[0] for word_tag in word_tags if word_tag[1][:2] == 'NN'])
 
 
 class Recommender(object):
@@ -76,6 +76,7 @@ class Recommender(object):
         self.coursera_vectorizer = coursera_tokenizer.get_vectorizer()
         self.coursera_vectors = coursera_tokenizer.get_vectors()
         self.coursera_courses = coursera_tokenizer.get_course_shortnames()
+        self.coursera_course_names = coursera_tokenizer.get_course_names()
         #self.coursera_vectorizer = coursera_vectorizer
         #self.coursera_vectors = coursera_vectors
 
@@ -100,6 +101,7 @@ class Recommender(object):
         missing_requirements_vectors = self.coursera_vectorizer.transform(self.missing_requirements)
         cosine_similarities = linear_kernel(missing_requirements_vectors, self.coursera_vectors)
         for i, requirement in enumerate(self.missing_requirements):
-            self.recommendations.append(get_top_courses(cosine_similarities[i], 3, self.coursera_courses))
+            self.recommendations.append(get_top_courses(cosine_similarities[i], 3, self.coursera_courses, \
+                self.coursera_course_names))
         return self.recommendations
 
