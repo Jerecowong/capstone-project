@@ -1,5 +1,7 @@
 import pickle
 import numpy as np
+import nltk
+import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 from sklearn.metrics.pairwise import cosine_similarity
@@ -30,6 +32,15 @@ def get_bottom_requirements(lst, n, requirements):
     #print np.argsort(lst)[0:n]
     return [requirements[i] for i in np.argsort(lst)[0:n]]
 
+def extract_nouns(sentence):
+    '''
+    Only keep nouns for each line
+    '''
+    text = nltk.word_tokenize(re.sub(r'[^\x00-\x7F]+', ' ', sentence))
+    word_tags = nltk.pos_tag(text)
+    return ' '.join([word_tag[0] for word_tag in word_tags if (word_tag[1] == 'NNS' or word_tag[1] =='NN')])
+
+
 class Recommender(object):
     '''
     Recommender class 
@@ -54,6 +65,11 @@ class Recommender(object):
     def initialize_attributes(self, resume, requirements, coursera_vectorizer=None, coursera_vectors=None):
         self.resume = [resume]
         self.requirements = [requirement for requirement in requirements.split('\n')]
+        #print self.requirements
+        #print self.use_tagger
+        if self.use_tagger:
+            self.requirements = [extract_nouns(x) for x in self.requirements]
+        #print self.requirements
         coursera_tokenizer = CourseraTokenizer(ngram_range=self.ngram_range)
         coursera_tokenizer.set_df('../data/courses_desc.json')
         coursera_tokenizer.set_vectors()

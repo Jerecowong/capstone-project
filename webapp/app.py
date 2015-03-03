@@ -24,7 +24,8 @@ def recommend():
     with open('data/coursera_vectors.pkl', 'rb') as handle:
         coursera_vectors = pkl.load(handle)
     '''
-    recommender = Recommender()
+    #recommender = Recommender()
+    recommender = Recommender(ngram_range=(1, 1), use_tagger=True)
     #recommender.initialize_attributes(resume, requirements, coursera_vectorizer, coursera_vectors)
     recommender.initialize_attributes(resume, requirements)
     recommender.vectorize_resume()
