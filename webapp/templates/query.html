@@ -3,24 +3,24 @@
   <head>
     	<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Paste resumes and job requiments</title>
-		<link rel=stylesheet type=text/css href="../static/mystyles.css">
+		<title>Paste resumes and job requiment</title>
+		<link rel="stylesheet", type="text/css", href="../static/mystyles.css">
 	</head>
 	<body>
     	<form action="/recommend",  method="POST", id="queryform">
-      Paste resumes and job requiments:
+      <h1>Paste resumes and job requirements:</h1>
     		<br><br>
-			Resume:
+			<h2>Resume:</h2>
 			<br>
     		<textarea name="resume", rows="20", cols="120", style="overflow:scroll", form="queryform">
     		</textarea>
-    		<br>
-			Requirements:
+    		<br><br><br>
+			<h2>Requirements:</h2>
 			<br>
     		<textarea name="requirements", rows="10", cols="120", style="overflow:scroll", form="queryform">
     		</textarea>
   			<br>
-  			<input type="submit"/>
+  			<input type="submit",  class="styledbtn"/>
 		</form>
 	</body>
 </html>

@@ -2,15 +2,21 @@
 <html lang="en">
   <head>
     	<meta charset="utf-8">
-    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta http-equiv="X-UA-Compatible", content="IE=edge">
 		<title>Course recommendations</title>
-		<link rel=stylesheet type=text/css href="../static/mystyles.css">
+		<link rel="stylesheet", type="text/css", href="../static/mystyles_.css">
 	</head>
 	<body>
-  The recommendations are:
+  <h1>The recommendations are:</h1>
     <br>
-    {% for shortname in data %}
-      {{ shortname }}
+    {% for item in data %}
+      <h2>Missing skill: {{item[0]}}</h2>
+      <h2>Courses: </h2>
+      <ul class="a">
+      {% for course in item[1]%}
+        <li><a href=https://www.coursera.org/course/{{course[0]}}>{{course[1]}}</a></li>
+      {% endfor %}
+      </ul>
       <br>
     {% endfor %}
 	</body>
