@@ -4,23 +4,24 @@
     	<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Paste resumes and job requiment</title>
-		<link rel="stylesheet", type="text/css", href="../static/mystyles.css">
+		<link rel="stylesheet" type="text/css" href="../static/mystyles.css">
 	</head>
 	<body>
-    	<form action="/recommend",  method="POST", id="queryform">
+    <div class="centered">
+    	<form action="/recommend"  method="POST" id="queryform">
       <h1>Paste resumes and job requirements:</h1>
     		<br><br>
 			<h2>Resume:</h2>
 			<br>
-    		<textarea name="resume", rows="20", cols="120", style="overflow:scroll", form="queryform">
+    		<textarea name="resume" rows="20" cols="120" style="overflow:scroll" form="queryform">
     		</textarea>
     		<br><br><br>
 			<h2>Requirements:</h2>
 			<br>
-    		<textarea name="requirements", rows="10", cols="120", style="overflow:scroll", form="queryform">
+    		<textarea name="requirements" rows="10" cols="120" style="overflow:scroll" form="queryform">
     		</textarea>
   			<br>
-  			<input type="submit",  class="styledbtn"/>
-		</form>
+  			<div><input type="submit"  class="styledbtn"/></div>  
+		</form></div>
 	</body>
 </html>
