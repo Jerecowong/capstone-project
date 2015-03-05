@@ -1,0 +1,10 @@
+PhD or MS degree in Computer Science, Electrical Engineering, Statistics, Applied Math, Econometrics, Operations Research, or other related fields.
+Deep understanding of statistical modeling, machine learning, or data mining concepts, and a track record of solving problems with these methods.
+Familiar with one or more machine learning or statistical modeling tools such as R, Matlab and scikit learn
+Proficient in one or more programming languages such as Python, Java and C
+Knowledge and experience of working with relational databases and SQL
+Strong analytical and quantitative problem solving ability.
+Excellent communication, relationship skills and a strong team player. 
+Experience with big data techniques (such as Hadoop, MapReduce, Hive, Pig, Spark)
+Knowledge of experimental design, ANOVA, statistical inference, and multivariate testing
+Knowledge of numerical or combinatorial optimization

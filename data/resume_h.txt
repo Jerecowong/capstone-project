@@ -1,0 +1,67 @@
+Email: haiouwangsf@gmail.com San Francisco Bay area
+Phone: (415) 298-5656 GitHub: http://github.com/Jerecowong
+______________________________________________________________________
+Summary:
+Data scientist with 10-year experience in software development: utilization of novel data processing
+tools and languages for large scaled data analytics, including structured, semi-structured and
+unstructured data; implementation of statistical models or machine learning methodologies.
+________________________________________________________________________________
+Skills:
+Programming & Analysis
+• Python {NumPy, SciPy, pandas, scikit-learn, NetworkX, NLTK, BeautifulSoup, Matplotlib,Graphlab, Flask,
+mrjob, Spark}
+• R {ggplot2, RSQLite, plyr, forecast}
+• Matlab / Octave
+• Java, C/C++, Lisp
+Databases
+• SQL {PostgreSQL, MySQL, SQLite}
+• NoSQL{MongoDB}
+Scalable Big Data Technologies
+• Hadoop, HDFS, MapReduce, Hive, Pig
+Data Visualization
+• Gephi
+______________________________________________________________________________
+Experience:
+Galvanize/Zipfian Academy San Francisco, CA
+Data Science Fellow 01/2015 – 03/2015
+• Intensive boot camp program helping to establish the fundamentals needed for a data science
+career in industry, including machine learning, advanced SQL, NLP, Hadoop and data
+visualization. The topics covered include: linear regression, logistics regression, k-nearest
+neighbors, decision trees, random forest, clustering, Bayesian (logistic and naive), hidden
+Markov, boosting, natural language processing, support vector machines, neural networks,
+dimensionality reduction, recommender, processing of A/B test, multi-arm bandit test, etc.
+• Capstone project: CourseBridge
+o Scraped all the information of all the courses offered by Coursera
+o Implemented a Coursera course recommender based on resume and a job posting using
+NLP and vector similarity techniques
+o Delivered the project as a web app using Flask and pandasInnovative Interfaces Inc. Emeryville,CA
+Software Engineer / Senior Software Engineer 08/2001 – 09/2012
+• Implemented and maintained one of the most popular web-based library systems (INNOPAC)
+• Worked on the full-stack; collaborated closely with product management to build out customer
+requirements, use-cases, and acceptance criteria for a Struts frame-worked web application to
+edit bibliographic record
+• Developed library catalog search web services; Library patron ratings and recommendation
+features with Collaborative Filtering algorithm; Daily, Monthly and yearly statistics report based on
+system logs; Library E-commerce product, etc.
+Oregon State University Corvallis, OR
+Teaching / Research Assistant 09/1998 – 07/2001
+• Research Assistant for Dr. D'Ambrosio: designing, developing and testing algorithms for
+Bayesian networks and information extraction.
+• Teaching CS261 (Data Structures in Java) summer section.
+• Teaching Assistant for CS511 (Operating Systems II), CS151 (C Programming), CS321
+(Computational Theory) and CS530 (Artificial Intelligence Programming)
+___________________________________________________________________________________
+Other Projects:
+• Hand-written digit recognition with Neural Networks in octave
+• Classifier for Higgs Boson Machine Learning project with Random forest and Support vector
+machine in Python
+• Analysis of collisions and Delay on California Freeway with linear regressions, classification
+tree and neural networks in R.
+• Regression analysis of relationship between brain size and IQ in SAS.
+• Leaf recognition algorithm for plant classification using Logistic regression and support
+vector machine in Java
+___________________________________________________________________________________
+Education:
+· M.S Statistics California State University, East Bay
+· M.S Computer Science Oregon State University
+· B.S Computer Science Zhejiang University

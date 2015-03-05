@@ -6,6 +6,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 from sklearn.metrics.pairwise import cosine_similarity
 from CourseraTokenizer import CourseraTokenizer
+from textblob import TextBlob
+from textblob.np_extractors import ConllExtractor
+
 
 class Recommender(object):
     '''
@@ -31,12 +34,13 @@ class Recommender(object):
 
     def initialize_attributes(self, resume, requirements, coursera_vectorizer=None, coursera_vectors=None):
         self.resume = [resume]
-        self.requirements = [requirement for requirement in requirements.split('\n')]
+        self.requirements = [requirement for requirement in requirements.split('\n') if len(requirement)>1]
         #print self.requirements
         #print self.use_tagger
         self.preprocessed_requirements = self.requirements
         if self.use_tagger:
-            self.preprocessed_requirements = [self.extract_nouns(x) for x in self.requirements]
+            #extractor = ConllExtractor()
+            self.preprocessed_requirements = [self.extract_noun_phrases_with_TextBlob(x) for x in self.requirements]
         #print self.requirements
         coursera_tokenizer = CourseraTokenizer(ngram_range=self.ngram_range)
         coursera_tokenizer.set_df('../data/courses_desc.json')
@@ -76,6 +80,19 @@ class Recommender(object):
     def get_missing_requirements(self, lst, preprocessed_requirements, requirements):
         return [(preprocessed_requirements[i], requirements[i]) for i in xrange(len(lst)) if lst[i] < 0.05]
 
+    '''
+    def extract_noun_phrases_with_TextBlob(self, sentence, extractor):
+        #extractor = ConllExtractor()
+        text = re.sub(r'[^\x00-\x7F]+', ' ', sentence)
+        blob = TextBlob(text, np_extractor=extractor)
+        return ' '.join(blob.noun_phrases)
+    '''
+    def extract_noun_phrases_with_TextBlob(self, sentence):
+        #extractor = ConllExtractor()
+        text = re.sub(r'[^\x00-\x7F]+', ' ', sentence)
+        blob = TextBlob(text)
+        return ' '.join(blob.noun_phrases)
+
     def extract_nouns(self, sentence):
         '''
         Only keep nouns for each line
@@ -84,11 +101,20 @@ class Recommender(object):
         word_tags = nltk.pos_tag(text)
         return ' '.join([word_tag[0] for word_tag in word_tags if word_tag[1][:2] == 'NN'])
 
+    def extract_nouns_verbs(self, sentence):
+        '''
+        Only keep nouns and verbs for each line
+        '''
+        text = nltk.word_tokenize(re.sub(r'[^\x00-\x7F]+', ' ', sentence))
+        word_tags = nltk.pos_tag(text)
+        return ' '.join([word_tag[0] for word_tag in word_tags if (word_tag[1][:2] == 'NN' or word_tag[1][:2] == 'VB')])
+
     def vectorize_resume(self):
         self.resume_vector = self.coursera_vectorizer.transform(self.resume)
 
     def vectorize_requirements(self):
-        self.requirement_vectors = self.coursera_vectorizer.transform(self.preprocessed_requirements)
+        #self.requirement_vectors = self.coursera_vectorizer.transform(self.preprocessed_requirements)
+        self.requirement_vectors = self.coursera_vectorizer.transform(self.requirements)
 
     def find_missing_skills(self):
         cosine_similarities = linear_kernel(self.requirement_vectors, self.resume_vector)

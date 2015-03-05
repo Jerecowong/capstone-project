@@ -33,9 +33,15 @@ def recommend():
     missing_requirement_pairs = recommender.find_missing_skills()
     missing_requirements = [item[1] for item in missing_requirement_pairs]
     course_recommedations = recommender.recommend()
+    '''
+    print "in App"
+    print "missing_requirements"
+    print missing_requirements
+    print len(missing_requirements)
+    '''
     if len(missing_requirements) > 0:
         return render_template('recommend.html', data=zip(missing_requirements, course_recommedations))
-    return "You have all the requirements"
+    return "You Meet all the requirements"
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=7777, debug=True)
 
