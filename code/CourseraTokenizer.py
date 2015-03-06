@@ -6,18 +6,18 @@ import cPickle as pkl
 
 
 class CourseraTokenizer(object):
-    def __init__(self, ngram_range=(1,1), use_stem=False):
+    def __init__(self, ngram_range=(1, 1), use_stem=False):
         '''
         INPUT:
-        - ngram_range:
-        - max_features:
-        - vectorizer:
-        - vectors:
-        - df:
+        - ngram_range: the lower and upper boundary of the range for different n-grams to be extracted
+        - max_features: the vocabulary that only consider the top max_features ordered by term frequency
+        - vectorizer: a collection of raw documents to a matrix of TF-IDF features
+        - vectors: Learn vocabulary and idf, return term-document matrix for Coursera courses.
+        - df: pandas.DataFrame for Coursera courses
         OUTPUT: None
         '''
         self.ngram_range = ngram_range
-        self.max_features = 1000
+        self.max_features = None
         self.vectorizer = TfidfVectorizer(stop_words='english', ngram_range=self.ngram_range,
                                     max_features=self.max_features)
         self.vectors = None
@@ -34,9 +34,6 @@ class CourseraTokenizer(object):
         return self.vectors
 
     def get_descriptions(self):
-        '''
-        Maybe I need use list(df['description'].values)
-        '''
         return self.df['description']
 
     def set_vectors(self):
@@ -59,6 +56,7 @@ if __name__ == '__main__':
     coursera_vectorizer = coursera_tokenizer.get_vectorizer()
     coursera_vectors = coursera_tokenizer.get_vectors()
     coursera_courses = coursera_tokenizer.get_course_shortnames()
+    # Save the tokenizer and vectors
     with open('../data/coursera_tokenizer.pkl', 'wb') as handle:
         pkl.dump(coursera_tokenizer, handle)
     with open('../data/coursera_vectors.pkl', 'wb') as handle:
