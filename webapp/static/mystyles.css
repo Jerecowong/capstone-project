@@ -1,11 +1,26 @@
 body {
-background-color : #f5fffa; 
+background-color : #CCFFCC; 
 margin : 0; 
 margin-top : 0; 
 padding : 0;  
 font-family : Verdana, Helvetica, sans-serif; 
 font-size : 75%;  
 font-weight : normal; 
+}
+.container {
+border-style: solid;
+border-width: 1px;
+border-color: #ff55ff;
+width: 980px;
+margin-right: auto;
+margin-left: auto;
+}
+.profile-requirement {
+box-shadow: 0 1px 4px #ccc;
+margin-top: 10px;
+padding: 6px;
+width: 300px;
+background-color: white;
 } 
 a:link, a:visited, a:active {
 color : #3350a3; 
@@ -43,7 +58,7 @@ list-style-type: square;
 line-height : 12px;
 }
 .centered {
-	text-align: center;
+text-align: center;
 }
 #border {
 border-left : 1px solid #c0c0c0; 

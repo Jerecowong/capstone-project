@@ -17,14 +17,12 @@ def submit_forms():
 def recommend():
     resume = request.form.get('resume', None) 
     requirements = request.form.get('requirements', None)
-    #course_recommedations = [u'datascitoolbox', u'pythonlearn', u'frenchrev', u'programming2', u'massiveteaching']
     '''
     with open('data/coursera_vectorizer.pkl', 'rb') as handle:
         coursera_vectorizer = pkl.load(handle)
     with open('data/coursera_vectors.pkl', 'rb') as handle:
         coursera_vectors = pkl.load(handle)
     '''
-    #recommender = Recommender()
     recommender = Recommender(ngram_range=(1, 1), use_tagger=True)
     #recommender.initialize_attributes(resume, requirements, coursera_vectorizer, coursera_vectors)
     recommender.initialize_attributes(resume, requirements)
