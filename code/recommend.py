@@ -1,13 +1,10 @@
-import pickle
+import cPickle as pkl
 import numpy as np
 import nltk
 import re
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
-from sklearn.metrics.pairwise import cosine_similarity
 from CourseraTokenizer import CourseraTokenizer
 from textblob import TextBlob
-from textblob.np_extractors import ConllExtractor
 
 
 class Recommender(object):
@@ -74,7 +71,7 @@ class Recommender(object):
         INPUT: LIST, INTEGER, LIST OF TURPLES
         OUTPUT: LIST
         '''
-        return [(presprocessed_requirements[i], requirements[i]) for i in np.argsort(lst)[0:n]]
+        return [(preprocessed_requirements[i], requirements[i]) for i in np.argsort(lst)[0:n]]
 
     def get_missing_requirements(self, lst, preprocessed_requirements, requirements):
         '''
@@ -85,10 +82,23 @@ class Recommender(object):
         '''
         return [(preprocessed_requirements[i], requirements[i]) for i in xrange(len(lst)) if lst[i] < 0.05]
 
+    def remove_stopwords(self, sentence):
+        '''
+        Only keep the real skills in the requirement
+        INPUT: STRING
+        OUTPUT: STRING
+        '''
+        stopwords = ['experience', 'training', 'passion', 'background', 'skill', 'ability', 'skills', 'things',
+                    'concepts', 'concept', 'traveling']
+        return ' '.join([word for word in sentence.split() if word not in stopwords])
+
     def extract_noun_phrases_with_TextBlob(self, sentence):
         '''
         Only keep nouns for each line using TextBlob package
+        INPUT: STRING
+        OUTPUT: STRING
         '''
+        sentence = self.remove_stopwords(sentence)
         text = re.sub(r'[^\x00-\x7F]+', ' ', sentence)
         blob = TextBlob(text)
         return ' '.join(blob.noun_phrases)
@@ -96,18 +106,24 @@ class Recommender(object):
     def extract_nouns(self, sentence):
         '''
         Only keep nouns for each line using nltk
+        INPUT: STRING
+        OUTPUT: STRING
         '''
+        sentence = self.remove_stopwords(sentence)
         text = nltk.word_tokenize(re.sub(r'[^\x00-\x7F]+', ' ', sentence))
         word_tags = nltk.pos_tag(text)
         return ' '.join([word_tag[0] for word_tag in word_tags if word_tag[1][:2] == 'NN'])
 
-    def extract_nouns_verbs(self, sentence):
+    def extract_nouns_verbings(self, sentence):
         '''
         Only keep nouns and verbs for each line using nltk
+        INPUT: STRING
+        OUTPUT: STRING
         '''
+        sentence = self.remove_stopwords(sentence)
         text = nltk.word_tokenize(re.sub(r'[^\x00-\x7F]+', ' ', sentence))
         word_tags = nltk.pos_tag(text)
-        return ' '.join([word_tag[0] for word_tag in word_tags if (word_tag[1][:2] == 'NN' or word_tag[1][:2] == 'VB')])
+        return ' '.join([word_tag[0] for word_tag in word_tags if (word_tag[1][:2] == 'NN' or word_tag == 'VBG')])
 
     def vectorize_resume(self):
         self.resume_vector = self.coursera_vectorizer.transform(self.resume)

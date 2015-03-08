@@ -1,7 +1,4 @@
 from flask import Flask, request, render_template
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import linear_kernel
-import numpy as np
 import cPickle as pkl
 from recommend import Recommender
 
