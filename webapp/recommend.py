@@ -34,14 +34,22 @@ class Recommender(object):
         self.ngram_range = ngram_range
         self.use_tagger = use_tagger
 
+    def not_empty_requirement(self, requirement):
+        '''
+        Check if it is an empty line
+        INPUT: STRING
+        OUTPUT: BOOLEAN
+        '''
+        return False if re.match(r'^\s*$', requirement) else True
+
     def initialize_attributes(self, resume, requirements, coursera_vectorizer=None, coursera_vectors=None):
         self.resume = [resume]
-        self.requirements = [requirement for requirement in requirements.split('\n') if len(requirement) > 1]
+        self.requirements = [requirement.strip() for requirement in requirements.split('\n') \
+                            if self.not_empty_requirement(requirement)]
         # print self.requirements
         # print self.use_tagger
         self.preprocessed_requirements = self.requirements
         if self.use_tagger:
-            # extractor = ConllExtractor()
             self.preprocessed_requirements = [self.extract_noun_phrases_with_TextBlob(x) for x in self.requirements]
         # print self.requirements
         coursera_tokenizer = CourseraTokenizer(ngram_range=self.ngram_range)

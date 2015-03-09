@@ -26,10 +26,10 @@ def get_recommendations(resume_file, requirement_file, ngram_range=(1, 1), use_t
 
 
 if __name__ == '__main__':
-    # resume_files = ['../data/resume_cs.txt', '../data/resume_sci.txt', '../data/resume_ds.txt']
-    # req_files = ['../data/req_cs.txt', '../data/req_ds.txt', '../data/req_ml.txt']
-    resume_files = ['../data/resume_h.txt']
-    req_files = ['../data/req_h.txt']
+    resume_files = ['../data/resume_cs.txt', '../data/resume_sci.txt', '../data/resume_ds.txt']
+    req_files = ['../data/req_cs.txt', '../data/req_ds.txt', '../data/req_ml.txt']
+    # resume_files = ['../data/resume_h.txt']
+    # req_files = ['../data/req_h.txt']
     for resume_file in resume_files:
         for req_file in req_files:
             print "%s    %s" % (resume_file, req_file)

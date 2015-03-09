@@ -31,7 +31,7 @@ def recommend():
     course_recommedations = recommender.recommend()
     if len(missing_requirements) > 0:
         return render_template('recommend.html', data=zip(missing_requirements, course_recommedations))
-    return "You Meet all the requirements"
+    return render_template('matchall.html')
 if __name__ == '__main__':
     # Start Flask app
     app.run(host='0.0.0.0', port=7777, debug=True)
