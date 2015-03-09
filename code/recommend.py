@@ -44,7 +44,7 @@ class Recommender(object):
 
     def initialize_attributes(self, resume, requirements, coursera_vectorizer=None, coursera_vectors=None):
         self.resume = [resume]
-        self.requirements = [requirement.strip() for requirement in requirements.split('\n') \
+        self.requirements = [requirement.strip() for requirement in requirements.split('\n')
                             if self.not_empty_requirement(requirement)]
         # print self.requirements
         # print self.use_tagger

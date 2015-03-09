@@ -55,3 +55,5 @@ of what are taught currently.
 	5. Display top 2 qualifications.
 	6. The missing set are the ones with very low similarity. Those will be used to form a list for querys for Coursera data.
 	7. Search the Coursera data with the queries and return list of items with highest similarity.
+
+http://jerecowong.pythonanywhere.com/
