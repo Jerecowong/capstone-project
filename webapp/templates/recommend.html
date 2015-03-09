@@ -8,13 +8,13 @@
 	</head>
 	<body>
   <div class="container">
-  <h1>The recommendations</h1>
+  <h1>Recommendations for you</h1>
     <br>
     {% for item in data %}
       <h2>Missing skill:</h2>
        {{item[0]}}
        <br><br>
-      <h2>Courses: </h2>
+      <h2>Recommended courses: </h2>
       <ul>
       {% for course in item[1]%}
         <li><a href=https://www.coursera.org/course/{{course[0]}}>{{course[1]}}</a></li>

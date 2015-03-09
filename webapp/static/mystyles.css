@@ -1,19 +1,22 @@
 body {
-background-color : #CCFFCC; 
 margin : 0; 
 margin-top : 0; 
 padding : 0;  
 font-family : Verdana, Helvetica, sans-serif; 
 font-size : 75%;  
-font-weight : normal; 
+font-weight : normal;
+background: lavender;
 }
 .container {
 border-style: solid;
 border-width: 1px;
-border-color: #ff55ff;
+border-color: black;
 width: 980px;
 margin-right: auto;
 margin-left: auto;
+padding: 3em;
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+background: #eeeeee;
 }
 .profile-requirement {
 box-shadow: 0 1px 4px #ccc;
@@ -45,13 +48,13 @@ font-size : 2em;
 font-weight : bold; 
 line-height : 20px; 
 margin-top : 0; 
-color : #330066; 
+color : black; 
 } 
 h2 { 
 font-weight : bold; 
 line-height : 12px; 
 margin-top : 0; 
-color : #336699; 
+color : black; 
 } 
 ul {
 list-style-type: square;
