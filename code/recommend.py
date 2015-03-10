@@ -11,11 +11,11 @@ class Recommender(object):
     def __init__(self, ngram_range=(1, 1), use_stem=False, use_tagger=False):
         '''
         INPUT:
-        - ngram_range: the lower and upper boundary of the range for different n-grams to be extracted
-        - max_features: the vocabulary that only consider the top max_features ordered by term frequency
-        - vectorizer: a collection of raw documents to a matrix of TF-IDF features
-        - vectors: learn vocabulary and idf, return term-document matrix for Coursera courses.
-        - use_tagger: a flag to extract noun phrases from requirements
+        - ngram_range: lower and upper boundary of the range for n-grams
+        - max_features: vocabulary of the top max_features by term frequency
+        - vectorizer: collection of raw documents to a matrix of TF-IDF
+        - vectors: Learn vocabulary and idf, return term-document matrix.
+        - use_tagger: flag to extract noun phrases from requirements
         - coursera_courses: Coursera course short names
         - coursera_course_names Coursera course full names
         OUTPUT: None
@@ -34,6 +34,14 @@ class Recommender(object):
         self.ngram_range = ngram_range
         self.use_tagger = use_tagger
 
+    def fit(self, resume, requirements):
+        '''
+        initialize the Recommender
+        '''
+        self.initialize_attributes(resume, requirements)
+        self.vectorize_resume()
+        self.vectorize_requirements()
+
     def not_empty_requirement(self, requirement):
         '''
         Check if it is an empty line
@@ -42,15 +50,17 @@ class Recommender(object):
         '''
         return False if re.match(r'^\s*$', requirement) else True
 
-    def initialize_attributes(self, resume, requirements, coursera_vectorizer=None, coursera_vectors=None):
+    def initialize_attributes(self, resume, requirements,
+                        coursera_vectorizer=None, coursera_vectors=None):
         self.resume = [resume]
-        self.requirements = [requirement.strip() for requirement in requirements.split('\n')
-                            if self.not_empty_requirement(requirement)]
+        self.requirements = [requirement.strip() for requirement in
+            requirements.split('\n') if self.not_empty_requirement(requirement)]
         # print self.requirements
         # print self.use_tagger
         self.preprocessed_requirements = self.requirements
         if self.use_tagger:
-            self.preprocessed_requirements = [self.extract_noun_phrases_with_TextBlob(x) for x in self.requirements]
+            self.preprocessed_requirements = [self.extract_nouns_TextBlob(x)
+                for x in self.requirements]
         # print self.requirements
         coursera_tokenizer = CourseraTokenizer(ngram_range=self.ngram_range)
         coursera_tokenizer.set_df('../data/courses_desc.json')
@@ -62,33 +72,35 @@ class Recommender(object):
 
     def get_top_courses(self, lst, n, courses, course_names):
         '''
-        Given a list of cosine similarities, find the indices with the highest n values.
-        Return the short name and full name pair of courses for each of these indices.
+        Given cosine similarity list , find indices with the highest n values.
+        Return short and full name pair of courses for each of the indices.
         INPUT: LIST OF TURPLES, INTEGER, LIST
         OUTPUT: LIST
-
-        Given a list of cosine similarities, find the indices with the highest n values.
-        Return the courses for each of these indices.
         '''
-        return [(courses[i], course_names[i], lst[i])for i in np.argsort(lst)[-1:-n - 1:-1]]
+        return [(courses[i], course_names[i], lst[i])
+                for i in np.argsort(lst)[-1:-n - 1:-1]]
 
-    def get_bottom_requirements(self, lst, n, preprocessed_requirements, requirements):
+    def get_bottom_requirements(self, lst, n, preprocessed_requirements,
+                             requirements):
         '''
-        Given a list of cosine similarities, find the indices with the lowest n values.
-        Return the requirement and extracted requirment pair for each of these indices.
+        Given cosine similarity list, find indices with the lowest n values.
+        Return original and extracted requirment pair for each of the indices.
         INPUT: LIST, INTEGER, LIST OF TURPLES
         OUTPUT: LIST
         '''
-        return [(preprocessed_requirements[i], requirements[i]) for i in np.argsort(lst)[0:n]]
+        return [(preprocessed_requirements[i], requirements[i])
+                for i in np.argsort(lst)[0:n]]
 
-    def get_missing_requirements(self, lst, preprocessed_requirements, requirements):
+    def get_missing_requirements(self, lst, preprocessed_requirements,
+                                requirements):
         '''
-        Given a list of cosine similarities, find the indices with low value < 0.05.
-        Return the requirement and extracted requirment pair for each of these indices.
+        Given a list of cosine similarities, find the indices with value < 0.05
+        Return original and extracted requirment pair for each of these indices.
         INPUT: LIST, INTEGER, LIST OF TURPLES
         OUTPUT: LIST
         '''
-        return [(preprocessed_requirements[i], requirements[i]) for i in xrange(len(lst)) if lst[i] < 0.05]
+        return [(preprocessed_requirements[i], requirements[i])
+                for i in xrange(len(lst)) if lst[i] < 0.05]
 
     def remove_stopwords(self, sentence):
         '''
@@ -96,11 +108,12 @@ class Recommender(object):
         INPUT: STRING
         OUTPUT: STRING
         '''
-        stopwords = ['experience', 'training', 'passion', 'background', 'skill', 'ability', 'skills', 'things',
-                    'concepts', 'concept', 'traveling']
-        return ' '.join([word for word in sentence.split() if word not in stopwords])
+        stopwords = ['experience', 'training', 'passion', 'background', 'skill',
+            'ability', 'skills', 'things', 'concepts', 'concept', 'traveling']
+        return ' '.join([word for word in sentence.split()
+                if word not in stopwords])
 
-    def extract_noun_phrases_with_TextBlob(self, sentence):
+    def extract_nouns_TextBlob(self, sentence):
         '''
         Only keep nouns for each line using TextBlob package
         INPUT: STRING
@@ -120,7 +133,8 @@ class Recommender(object):
         sentence = self.remove_stopwords(sentence)
         text = nltk.word_tokenize(re.sub(r'[^\x00-\x7F]+', ' ', sentence))
         word_tags = nltk.pos_tag(text)
-        return ' '.join([word_tag[0] for word_tag in word_tags if word_tag[1][:2] == 'NN'])
+        return ' '.join([word_tag[0] for word_tag in word_tags
+                if word_tag[1][:2] == 'NN'])
 
     def extract_nouns_verbings(self, sentence):
         '''
@@ -131,20 +145,24 @@ class Recommender(object):
         sentence = self.remove_stopwords(sentence)
         text = nltk.word_tokenize(re.sub(r'[^\x00-\x7F]+', ' ', sentence))
         word_tags = nltk.pos_tag(text)
-        return ' '.join([word_tag[0] for word_tag in word_tags if (word_tag[1][:2] == 'NN' or word_tag == 'VBG')])
+        return ' '.join([word_tag[0] for word_tag in word_tags
+            if (word_tag[1][:2] == 'NN' or word_tag == 'VBG')])
 
     def vectorize_resume(self):
         self.resume_vector = self.coursera_vectorizer.transform(self.resume)
 
     def vectorize_requirements(self):
-        self.requirement_vectors = self.coursera_vectorizer.transform(self.requirements)
+        self.requirement_vectors = self.coursera_vectorizer.transform(
+            self.requirements)
 
     def find_missing_skills(self):
-        cosine_similarities = linear_kernel(self.requirement_vectors, self.resume_vector)
-        # self.missing_requirements = self.get_bottom_requirements(cosine_similarities.flatten(),2,
+        cosine_similarities = linear_kernel(self.requirement_vectors,
+                self.resume_vector)
         # self.preprocessed_requirements, self.requirements)
-        self.missing_requirements = self.get_missing_requirements(cosine_similarities.flatten(),
-             self.preprocessed_requirements, self.requirements)
+        self.missing_requirements = self.get_missing_requirements(
+            cosine_similarities.flatten(),
+            self.preprocessed_requirements,
+            self.requirements)
         return self.missing_requirements
 
     def recommend(self):
@@ -152,10 +170,12 @@ class Recommender(object):
         INPUT: None
         OUTPUT: names of the top 3 most relevant course recommendations
         '''
-        missing_requirements_vectors = self.coursera_vectorizer.transform([item[0]
-            for item in self.missing_requirements])
-        cosine_similarities = linear_kernel(missing_requirements_vectors, self.coursera_vectors)
+        missing_requirements_vectors = self.coursera_vectorizer.transform(
+            [item[0] for item in self.missing_requirements])
+        cosine_similarities = linear_kernel(missing_requirements_vectors,
+            self.coursera_vectors)
         for i, requirement in enumerate(self.missing_requirements):
-            self.recommendations.append(self.get_top_courses(cosine_similarities[i], 3, self.coursera_courses,
+            self.recommendations.append(self.get_top_courses(
+                cosine_similarities[i], 3, self.coursera_courses,
                 self.coursera_course_names))
         return self.recommendations

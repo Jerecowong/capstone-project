@@ -8,17 +8,17 @@ class CourseraTokenizer(object):
     def __init__(self, ngram_range=(1, 1), use_stem=False):
         '''
         INPUT:
-        - ngram_range: the lower and upper boundary of the range for different n-grams to be extracted
-        - max_features: the vocabulary that only consider the top max_features ordered by term frequency
-        - vectorizer: a collection of raw documents to a matrix of TF-IDF features
-        - vectors: Learn vocabulary and idf, return term-document matrix for Coursera courses.
+        - ngram_range: lower and upper boundary of the range for n-grams
+        - max_features: vocabulary of the top max_features by term frequency
+        - vectorizer: collection of raw documents to a matrix of TF-IDF
+        - vectors: Learn vocabulary and idf, return term-document matrix.
         - df: pandas.DataFrame for Coursera courses
         OUTPUT: None
         '''
         self.ngram_range = ngram_range
         self.max_features = None
-        self.vectorizer = TfidfVectorizer(stop_words='english', ngram_range=self.ngram_range,
-                                    max_features=self.max_features)
+        self.vectorizer = TfidfVectorizer(stop_words='english',
+            ngram_range=self.ngram_range, max_features=self.max_features)
         self.vectors = None
         self.df = None
 
@@ -27,7 +27,8 @@ class CourseraTokenizer(object):
 
     def set_df(self, file_name):
         self.df = pd.read_json(file_name)
-        self.df['description'] = self.df['name'] + ' ' + self.df['shortDescription']
+        self.df['description'] = self.df['name'] + ' ' \
+            + self.df['shortDescription']
 
     def get_vectors(self):
         return self.vectors

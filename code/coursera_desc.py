@@ -17,7 +17,8 @@ def get_coursera_course_data():
     client = MongoClient('mongodb://localhost:27017/')
     db = client.coursedump
     collection = db.coursera_desc
-    url = 'https://api.coursera.org/api/catalog.v1/courses?fields=language,shortDescription'
+    url = 'https://api.coursera.org/api/catalog.v1/courses?fields=language,\
+    shortDescription'
     response = requests.get(url)
     with open('courses_desc.json', 'w') as outfile:
         json.dump(response.json()['elements'], outfile)
