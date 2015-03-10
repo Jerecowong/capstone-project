@@ -10,7 +10,7 @@ def get_coursera_course_data():
     '''
     Using the API from https://tech.coursera.org/app-platform/catalog/
     to build the cousera collection in mongodb which contain all the
-    course infomation offered on coursera
+    course information offered on coursera
     courses.json, collection coursedump.coursera are built
     '''
 
@@ -28,5 +28,7 @@ def get_coursera_course_data():
                 collection.insert(course)
             except pymongo.errors.DuplicateKeyError:
                 pass
+
+
 if __name__ == "__main__":
     get_coursera_course_data()
