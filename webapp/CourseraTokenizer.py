@@ -2,7 +2,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
 from sklearn.metrics.pairwise import linear_kernel
 import cPickle as pkl
-
+from nltk.stem.snowball import SnowballStemmer
+import re
 
 class CourseraTokenizer(object):
     def __init__(self, ngram_range=(1, 1), use_stem=False):
@@ -16,6 +17,7 @@ class CourseraTokenizer(object):
         OUTPUT: None
         '''
         self.ngram_range = ngram_range
+        self.use_stem = use_stem
         self.max_features = None
         self.vectorizer = TfidfVectorizer(stop_words='english',
             ngram_range=self.ngram_range, max_features=self.max_features)
@@ -36,8 +38,15 @@ class CourseraTokenizer(object):
     def get_descriptions(self):
         return self.df['description']
 
+    def stematize_descriptions(self, descriptions):
+        snowball = SnowballStemmer('english')
+        stematize = lambda desc: ' '.join(snowball.stem(word) for word in desc.split())
+        return [stematize(re.sub(r'[^\x00-\x7F]+', ' ',desc)) for desc in descriptions]
+
     def set_vectors(self):
         docs = self.get_descriptions()
+        if self.use_stem:
+            docs = self.stematize_descriptions(docs)
         self.vectors = self.vectorizer.fit_transform(docs).toarray()
 
     def get_vectorizer(self):
@@ -48,6 +57,7 @@ class CourseraTokenizer(object):
 
     def get_course_names(self):
         return self.df['name']
+
 
 if __name__ == '__main__':
     coursera_tokenizer = CourseraTokenizer()

@@ -15,11 +15,16 @@
        {{item[0]}}
        <br><br>
       <h2>Recommended courses: </h2>
-      <ul>
-      {% for course in item[1]%}
-        <li><a href=https://www.coursera.org/course/{{course[0]}}>{{course[1]}}</a></li>
-      {% endfor %}
-      </ul>
+      {% if item[1]|length > 0 %}
+        <ul>
+        {% for course in item[1]%}
+          <li><a href=https://www.coursera.org/course/{{course[0]}}>{{course[1]}}</a></li>
+        {% endfor %}
+        </ul>
+      {% else %}
+        No suitable course found.
+        <br>
+      {% endif %}
       <br>
     {% endfor %}
   </div>

@@ -2,6 +2,7 @@ import cPickle as pkl
 import numpy as np
 import nltk
 import re
+from nltk.stem.snowball import SnowballStemmer
 from sklearn.metrics.pairwise import linear_kernel
 from CourseraTokenizer import CourseraTokenizer
 from textblob import TextBlob
@@ -33,6 +34,7 @@ class Recommender(object):
         self.coursera_course_names = None
         self.ngram_range = ngram_range
         self.use_tagger = use_tagger
+        self.use_stem = use_stem
 
     def fit(self, resume, requirements):
         '''
@@ -50,8 +52,8 @@ class Recommender(object):
         '''
         return False if re.match(r'^\s*$', requirement) else True
 
-    def initialize_attributes(self, resume, requirements,
-                        coursera_vectorizer=None, coursera_vectors=None):
+    def initialize_attributes(self, resume, requirements, 
+            coursera_vectorizer=None, coursera_vectors=None):
         self.resume = [resume]
         self.requirements = [requirement.strip() for requirement in
             requirements.split('\n') if self.not_empty_requirement(requirement)]
@@ -62,7 +64,7 @@ class Recommender(object):
             self.preprocessed_requirements = [self.extract_nouns_TextBlob(x)
                 for x in self.requirements]
         # print self.requirements
-        coursera_tokenizer = CourseraTokenizer(ngram_range=self.ngram_range)
+        coursera_tokenizer = CourseraTokenizer(ngram_range=self.ngram_range, use_stem=self.use_stem)
         coursera_tokenizer.set_df('../data/courses_desc.json')
         coursera_tokenizer.set_vectors()
         self.coursera_vectorizer = coursera_tokenizer.get_vectorizer()
@@ -79,6 +81,18 @@ class Recommender(object):
         '''
         return [(courses[i], course_names[i], lst[i])
                 for i in np.argsort(lst)[-1:-n - 1:-1]]
+
+    def stematize_descriptions(self, descriptions):
+        snowball = SnowballStemmer('english')
+        stematize = lambda desc: ' '.join(snowball.stem(word) for word in desc.split())
+        return [stematize(re.sub(r'[^\x00-\x7F]+', ' ',desc)) for desc in descriptions]
+
+    def filter_courses(self, courses_triple, threshold=0.10):
+        '''
+        Keep the courses with similarity score higher than threshold
+        '''
+        return [item for item in courses_triple if item[2] >= threshold]
+
 
     def get_bottom_requirements(self, lst, n, preprocessed_requirements,
                              requirements):
@@ -111,7 +125,7 @@ class Recommender(object):
         stopwords = ['experience', 'training', 'passion', 'background', 'skill',
             'ability', 'skills', 'things', 'concepts', 'concept', 'traveling']
         return ' '.join([word for word in sentence.split()
-                if word not in stopwords])
+                if word.lower() not in stopwords])
 
     def extract_nouns_TextBlob(self, sentence):
         '''
@@ -136,7 +150,7 @@ class Recommender(object):
         return ' '.join([word_tag[0] for word_tag in word_tags
                 if word_tag[1][:2] == 'NN'])
 
-    def extract_nouns_verbings(self, sentence):
+    def extract_nouns_verbs(self, sentence):
         '''
         Only keep nouns and verbs for each line using nltk
         INPUT: STRING
@@ -146,14 +160,20 @@ class Recommender(object):
         text = nltk.word_tokenize(re.sub(r'[^\x00-\x7F]+', ' ', sentence))
         word_tags = nltk.pos_tag(text)
         return ' '.join([word_tag[0] for word_tag in word_tags
-            if (word_tag[1][:2] == 'NN' or word_tag == 'VBG')])
+            if (word_tag[1][:2] == 'NN' or word_tag[1][:2] == 'VB')])
 
     def vectorize_resume(self):
-        self.resume_vector = self.coursera_vectorizer.transform(self.resume)
+        resume = self.resume
+        if self.use_stem:
+            resume = self.stematize_descriptions(resume)
+        self.resume_vector = self.coursera_vectorizer.transform(resume)
 
     def vectorize_requirements(self):
+        requirements = self.requirements
+        if self.use_stem:
+            requirements = self.stematize_descriptions(requirements)
         self.requirement_vectors = self.coursera_vectorizer.transform(
-            self.requirements)
+            requirements)
 
     def find_missing_skills(self):
         cosine_similarities = linear_kernel(self.requirement_vectors,
@@ -170,12 +190,23 @@ class Recommender(object):
         INPUT: None
         OUTPUT: names of the top 3 most relevant course recommendations
         '''
+        missing_requirements = [item[0] for item in self.missing_requirements]
+        if self.use_stem:
+            missing_requirements = self.stematize_descriptions(missing_requirements)
+
         missing_requirements_vectors = self.coursera_vectorizer.transform(
-            [item[0] for item in self.missing_requirements])
+            missing_requirements)
         cosine_similarities = linear_kernel(missing_requirements_vectors,
             self.coursera_vectors)
+        '''
         for i, requirement in enumerate(self.missing_requirements):
             self.recommendations.append(self.get_top_courses(
                 cosine_similarities[i], 3, self.coursera_courses,
                 self.coursera_course_names))
+        '''
+        for i, requirement in enumerate(self.missing_requirements):
+            self.recommendations.append(self.filter_courses(self.get_top_courses(
+                cosine_similarities[i], 3, self.coursera_courses,
+                self.coursera_course_names)))
+
         return self.recommendations
