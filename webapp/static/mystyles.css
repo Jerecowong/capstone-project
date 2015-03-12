@@ -5,7 +5,7 @@ padding : 0;
 font-family : Verdana, Helvetica, sans-serif; 
 font-size : 75%;  
 font-weight : normal;
-background: #eee;
+//background: #eee;
 }
 .container {
 border-style: solid;
@@ -16,7 +16,7 @@ margin-right: auto;
 margin-left: auto;
 padding: 3em;
 box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-background: #ddd;
+background: #fff;
 }
 .profile-requirement {
 box-shadow: 0 1px 4px #ccc;
@@ -72,15 +72,15 @@ input[type=text] {padding:5px; border:2px solid #ccc;
 -webkit-border-radius: 5px;
 border-radius: 5px;
 }
-input[type=text]:focus {border-color:#333; }
-input[type=submit] {	background:#5CCD00;
-	background:-moz-linear-gradient(top,#5CCD00 0%,#4AA400 100%);
-	background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#5CCD00),color-stop(100%,#4AA400));
-	background:-webkit-linear-gradient(top,#5CCD00 0%,#4AA400 100%);
-	background:-o-linear-gradient(top,#5CCD00 0%,#4AA400 100%);
-	background:-ms-linear-gradient(top,#5CCD00 0%,#4AA400 100%);
-	background:linear-gradient(top,#5CCD00 0%,#4AA400 100%);
-	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#5CCD00', endColorstr='#4AA400',GradientType=0);
+input[type=text]:focus {border-color:#000; }
+input[type=submit] {background:#000000;
+	background:-moz-linear-gradient(top,#000000 0%,#000000 100%);
+	background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#000000),color-stop(100%,#000000));
+	background:-webkit-linear-gradient(top,#000000 0%,#000000 100%);
+	background:-o-linear-gradient(top,#000000 0%,#000000 100%);
+	background:-ms-linear-gradient(top,#000000 0%,#000000 100%);
+	background:linear-gradient(top,#000000 0%,#000000 100%);
+	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=0);
 	padding:10px 15px;
 	color:#fff;
 	font-family:'Helvetica Neue',sans-serif;
@@ -88,4 +88,4 @@ input[type=submit] {	background:#5CCD00;
 	border-radius:5px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
-	border:1px solid #459A00
+	border:1px solid #000000
