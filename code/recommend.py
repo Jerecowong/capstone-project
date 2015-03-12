@@ -52,7 +52,7 @@ class Recommender(object):
         '''
         return False if re.match(r'^\s*$', requirement) else True
 
-    def initialize_attributes(self, resume, requirements, 
+    def initialize_attributes(self, resume, requirements,
             coursera_vectorizer=None, coursera_vectors=None):
         self.resume = [resume]
         self.requirements = [requirement.strip() for requirement in
@@ -64,7 +64,8 @@ class Recommender(object):
             self.preprocessed_requirements = [self.extract_nouns_TextBlob(x)
                 for x in self.requirements]
         # print self.requirements
-        coursera_tokenizer = CourseraTokenizer(ngram_range=self.ngram_range, use_stem=self.use_stem)
+        coursera_tokenizer = CourseraTokenizer(ngram_range=self.ngram_range,
+                            use_stem=self.use_stem)
         coursera_tokenizer.set_df('../data/courses_desc.json')
         coursera_tokenizer.set_vectors()
         self.coursera_vectorizer = coursera_tokenizer.get_vectorizer()
@@ -84,15 +85,16 @@ class Recommender(object):
 
     def stematize_descriptions(self, descriptions):
         snowball = SnowballStemmer('english')
-        stematize = lambda desc: ' '.join(snowball.stem(word) for word in desc.split())
-        return [stematize(re.sub(r'[^\x00-\x7F]+', ' ',desc)) for desc in descriptions]
+        stematize = lambda desc: ' '.join(snowball.stem(word)
+                for word in desc.split())
+        return [stematize(re.sub(r'[^\x00-\x7F]+', ' ', desc))
+                for desc in descriptions]
 
     def filter_courses(self, courses_triple, threshold=0.10):
         '''
         Keep the courses with similarity score higher than threshold
         '''
         return [item for item in courses_triple if item[2] >= threshold]
-
 
     def get_bottom_requirements(self, lst, n, preprocessed_requirements,
                              requirements):
@@ -192,8 +194,8 @@ class Recommender(object):
         '''
         missing_requirements = [item[0] for item in self.missing_requirements]
         if self.use_stem:
-            missing_requirements = self.stematize_descriptions(missing_requirements)
-
+            missing_requirements = self.stematize_descriptions(
+                missing_requirements)
         missing_requirements_vectors = self.coursera_vectorizer.transform(
             missing_requirements)
         cosine_similarities = linear_kernel(missing_requirements_vectors,
@@ -205,8 +207,7 @@ class Recommender(object):
                 self.coursera_course_names))
         '''
         for i, requirement in enumerate(self.missing_requirements):
-            self.recommendations.append(self.filter_courses(self.get_top_courses(
-                cosine_similarities[i], 3, self.coursera_courses,
-                self.coursera_course_names)))
-
+            self.recommendations.append(self.filter_courses(
+                self.get_top_courses(cosine_similarities[i], 3,
+                    self.coursera_courses, self.coursera_course_names)))
         return self.recommendations

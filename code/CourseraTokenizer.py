@@ -5,6 +5,7 @@ import cPickle as pkl
 from nltk.stem.snowball import SnowballStemmer
 import re
 
+
 class CourseraTokenizer(object):
     def __init__(self, ngram_range=(1, 1), use_stem=False):
         '''
@@ -40,8 +41,10 @@ class CourseraTokenizer(object):
 
     def stematize_descriptions(self, descriptions):
         snowball = SnowballStemmer('english')
-        stematize = lambda desc: ' '.join(snowball.stem(word) for word in desc.split())
-        return [stematize(re.sub(r'[^\x00-\x7F]+', ' ',desc)) for desc in descriptions]
+        stematize = lambda desc: ' '.join(snowball.stem(word)
+                for word in desc.split())
+        return [stematize(re.sub(r'[^\x00-\x7F]+', ' ', desc))
+                for desc in descriptions]
 
     def set_vectors(self):
         docs = self.get_descriptions()
