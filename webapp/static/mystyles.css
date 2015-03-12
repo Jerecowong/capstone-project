@@ -5,7 +5,7 @@ padding : 0;
 font-family : Verdana, Helvetica, sans-serif; 
 font-size : 75%;  
 font-weight : normal;
-background: lavender;
+background: #eee;
 }
 .container {
 border-style: solid;
@@ -16,7 +16,7 @@ margin-right: auto;
 margin-left: auto;
 padding: 3em;
 box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-background: #eeeeee;
+background: #ddd;
 }
 .profile-requirement {
 box-shadow: 0 1px 4px #ccc;

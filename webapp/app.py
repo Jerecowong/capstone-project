@@ -20,7 +20,8 @@ def recommend():
         coursera_vectors = pkl.load(handle)
     '''
     # Initialize recommender
-    recommender = Recommender(ngram_range=(1, 1), use_tagger=True, use_stem=False)
+    recommender = Recommender(ngram_range=(1, 1), use_tagger=True,
+        use_stem=False)
     recommender.fit(resume, requirements)
     # Requirement pair: [0] original requirement: [1]Extracted requirement
     missing_requirement_pairs = recommender.find_missing_skills()
