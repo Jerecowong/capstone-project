@@ -59,13 +59,10 @@ class Recommender(object):
         self.resume = [resume]
         self.requirements = [requirement.strip() for requirement in
             requirements.split('\n') if self.not_empty_requirement(requirement)]
-        # print self.requirements
-        # print self.use_tagger
         self.preprocessed_requirements = self.requirements
         if self.use_tagger:
             self.preprocessed_requirements = [self.extract_nouns_TextBlob(x)
                 for x in self.requirements]
-        # print self.requirements
         coursera_tokenizer = CourseraTokenizer(ngram_range=self.ngram_range,
                             use_stem=self.use_stem)
         coursera_tokenizer.set_df('../data/courses_desc.json')
@@ -75,8 +72,7 @@ class Recommender(object):
         self.coursera_courses = coursera_tokenizer.get_course_shortnames()
         self.coursera_course_names = coursera_tokenizer.get_course_names()
         self.resume_vectorizer = TfidfVectorizer(stop_words='english',
-            ngram_range=(1,1))
-
+            ngram_range=(1, 1))
 
     def get_top_courses(self, lst, n, courses, course_names):
         '''
@@ -184,9 +180,13 @@ class Recommender(object):
             requirements)
 
     def find_missing_skills(self):
+        '''
+        INPUT: None
+        OUTPUT: List of pairs of missing requirement in original and
+        extracted form
+        '''
         cosine_similarities = linear_kernel(self.requirement_vectors,
                 self.resume_vector)
-        # self.preprocessed_requirements, self.requirements)
         self.missing_requirements = self.get_missing_requirements(
             cosine_similarities.flatten(),
             self.preprocessed_requirements,
@@ -206,12 +206,6 @@ class Recommender(object):
             missing_requirements)
         cosine_similarities = linear_kernel(missing_requirements_vectors,
             self.coursera_vectors)
-        '''
-        for i, requirement in enumerate(self.missing_requirements):
-            self.recommendations.append(self.get_top_courses(
-                cosine_similarities[i], 3, self.coursera_courses,
-                self.coursera_course_names))
-        '''
         for i, requirement in enumerate(self.missing_requirements):
             self.recommendations.append(self.filter_courses(
                 self.get_top_courses(cosine_similarities[i], 3,
