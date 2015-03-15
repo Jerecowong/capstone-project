@@ -13,12 +13,6 @@ def submit_forms():
 def recommend():
     resume = request.form.get('resume', None)
     requirements = request.form.get('requirements', None)
-    '''
-    with open('data/coursera_vectorizer.pkl', 'rb') as handle:
-        coursera_vectorizer = pkl.load(handle)
-    with open('data/coursera_vectors.pkl', 'rb') as handle:
-        coursera_vectors = pkl.load(handle)
-    '''
     # Initialize recommender
     recommender = Recommender(ngram_range=(1, 1), use_tagger=True,
         use_stem=False)
