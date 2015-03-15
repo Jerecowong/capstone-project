@@ -3,6 +3,7 @@ import numpy as np
 import nltk
 import re
 from nltk.stem.snowball import SnowballStemmer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 from CourseraTokenizer import CourseraTokenizer
 from textblob import TextBlob
@@ -24,6 +25,7 @@ class Recommender(object):
         self.resume = None
         self.requirements = None
         self.preprocessed_requirements = None
+        self.resume_vectorizer = None
         self.coursera_vectorizer = None
         self.coursera_vectors = None
         self.missing_requirements = None
@@ -72,6 +74,9 @@ class Recommender(object):
         self.coursera_vectors = coursera_tokenizer.get_vectors()
         self.coursera_courses = coursera_tokenizer.get_course_shortnames()
         self.coursera_course_names = coursera_tokenizer.get_course_names()
+        self.resume_vectorizer = TfidfVectorizer(stop_words='english',
+            ngram_range=(1,1))
+
 
     def get_top_courses(self, lst, n, courses, course_names):
         '''
@@ -126,6 +131,7 @@ class Recommender(object):
         '''
         stopwords = ['experience', 'training', 'passion', 'background', 'skill',
             'ability', 'skills', 'things', 'concepts', 'concept', 'traveling']
+        sentence = re.sub(r'[^\x00-\x7F]+', ' ', sentence)
         return ' '.join([word for word in sentence.split()
                 if word.lower() not in stopwords])
 
@@ -135,8 +141,8 @@ class Recommender(object):
         INPUT: STRING
         OUTPUT: STRING
         '''
-        sentence = self.remove_stopwords(sentence)
         text = re.sub(r'[^\x00-\x7F]+', ' ', sentence)
+        sentence = self.remove_stopwords(sentence)
         blob = TextBlob(text)
         return ' '.join(blob.noun_phrases)
 
@@ -168,13 +174,13 @@ class Recommender(object):
         resume = self.resume
         if self.use_stem:
             resume = self.stematize_descriptions(resume)
-        self.resume_vector = self.coursera_vectorizer.transform(resume)
+        self.resume_vector = self.resume_vectorizer.fit_transform(resume)
 
     def vectorize_requirements(self):
         requirements = self.requirements
         if self.use_stem:
             requirements = self.stematize_descriptions(requirements)
-        self.requirement_vectors = self.coursera_vectorizer.transform(
+        self.requirement_vectors = self.resume_vectorizer.transform(
             requirements)
 
     def find_missing_skills(self):
