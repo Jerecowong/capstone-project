@@ -29,7 +29,7 @@ I have the data stored in MongoDB. Each doc has course name and a short descript
 Description will be used for similarity check.
 
 Name and shortName will be used to to construct the hot links for the recommendation page, it has a pattern of
-baseurl "www.coursera.org/course"  + shortName. For exmple: [https://www.coursera.org/course/perceptivehunting] (https://www.coursera.org/course/perceptivehunting)
+baseurl "www.coursera.org/course/"  + shortName. For exmple: [https://www.coursera.org/course/perceptivehunting] (https://www.coursera.org/course/perceptivehunting)
 
 ## Process
 There are 2 webpages for the app:
@@ -55,14 +55,27 @@ There are 2 webpages for the app:
 
 ## Files contained in this repo:
 
+* [code](https://https://github.com/Jerecowong/capstone-project/tree/master/code)
+	app.py
+	CourseraTokenizer.py
+	experiment.py
+	recommend.py
+	coursera_desc.py  
+	CourseraTokenizer.py
 
+* [data](https://github.com/Jerecowong/capstone-project/tree/master/data)
+	Contains the Coursera course data and testing data. 
+* [test](https://github.com/Jerecowong/capstone-project/tree/master/test)
+	Contains the unit test.
+* [webapp](https://github.com/Jerecowong/capstone-project/tree/master/webapp)
+	Contains the dependency of the Python files, html templates and statics style sheets.
 
 ## Possible future work
 	1. Extend the course recommendation to include edX and Udacity
 	2. Alter to help HR and recruiter with screening the candidates
 	3. Find a better approach to identify the real missing skills, maybe by adding a mini classifier to classify each word in the requirement to ensure to focus on “real skills and technologies”
 
-## Web App (can be found in app/*)
+## Web App (can be found in webapp/*)
 The final product can be found at:  
 http://jerecowong.pythonanywhere.com/
 

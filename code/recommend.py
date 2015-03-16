@@ -65,7 +65,7 @@ class Recommender(object):
                 for x in self.requirements]
         coursera_tokenizer = CourseraTokenizer(ngram_range=self.ngram_range,
                             use_stem=self.use_stem)
-        coursera_tokenizer.set_df('../data/courses_desc.json')
+        coursera_tokenizer.set_df('data/courses_desc.json')
         coursera_tokenizer.set_vectors()
         self.coursera_vectorizer = coursera_tokenizer.get_vectorizer()
         self.coursera_vectors = coursera_tokenizer.get_vectors()
