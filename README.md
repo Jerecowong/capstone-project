@@ -56,19 +56,33 @@ There are 2 webpages for the app:
 ## Files contained in this repo:
 
 * [code](https://https://github.com/Jerecowong/capstone-project/tree/master/code)
-	app.py
-	CourseraTokenizer.py
-	experiment.py
-	recommend.py
-	coursera_desc.py  
-	CourseraTokenizer.py
+    Contains the following:
+
+	app.py : flask app
+
+	CourseraTokenizer.py : CourseraTokenizer class
+
+	experiment.py : text based application for experiment convenience
+
+	coursera_desc.py :  Python script to scrape the Coursera course data
+
+	recommender.py : recommender class, the core part for the app
+
 
 * [data](https://github.com/Jerecowong/capstone-project/tree/master/data)
+
 	Contains the Coursera course data and testing data. 
+
+
 * [test](https://github.com/Jerecowong/capstone-project/tree/master/test)
-	Contains the unit test.
+	
+	Contains the unit test:  tests.py
+
+
 * [webapp](https://github.com/Jerecowong/capstone-project/tree/master/webapp)
+
 	Contains the dependency of the Python files, html templates and statics style sheets.
+
 
 ## Possible future work
 	1. Extend the course recommendation to include edX and Udacity
