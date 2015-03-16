@@ -56,7 +56,7 @@ There are 2 webpages for the app:
 ## Files contained in this repo:
 
 * [code](https://https://github.com/Jerecowong/capstone-project/tree/master/code)
-    Contains the following:
+    contains the following:
 
 	app.py : flask app
 
@@ -69,19 +69,16 @@ There are 2 webpages for the app:
 	recommender.py : recommender class, the core part for the app
 
 
-* [data](https://github.com/Jerecowong/capstone-project/tree/master/data)
-
-	Contains the Coursera course data and testing data. 
+* [data](https://github.com/Jerecowong/capstone-project/tree/master/data) 
+	contains the Coursera course data and testing data. 
 
 
 * [test](https://github.com/Jerecowong/capstone-project/tree/master/test)
-	
-	Contains the unit test:  tests.py
+	contains the unit test:  tests.py
 
 
 * [webapp](https://github.com/Jerecowong/capstone-project/tree/master/webapp)
-
-	Contains the dependency of the Python files, html templates and statics style sheets.
+	contains the dependency of the Python files, html templates and statics style sheets.
 
 
 ## Possible future work
