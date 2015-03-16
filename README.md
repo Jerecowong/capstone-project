@@ -4,9 +4,9 @@
 The NLP based web application is aimed to help people who are looking for jobs. In addition to identifying their missing skill sets for the job they are interested in, the app will offer a list of Coursera courses based on each missing requirement, which ensure them to be better prepared to meet all the requirements for the job.
 
 ## Motivation
-Checking a job posting, matching the qualifications, identifying missing skills and then figuring out a resources to makeup the needed skills is a very typical procedure for job hunters.
+Checking a job posting, matching the qualifications, identifying missing skills and then figuring out a resources to cover up the needed skills is a very typical procedure for job hunters.
 
-The app is aimed to make the process a little more efficient and less tedious. It can be useful to direct people to  resources on Coursera so that they can sharpen the skills needed for their desired position by thaking the rihtg courses.
+The app is designed to make the process a little more efficient and less tedious. It can be useful to direct people to  resources on Coursera so that they can sharpen the skills needed for their desired position by thaking the right courses.
 
 ## Data Sources
 Getting Coursera course feature data is easy, I scraped the data using their API.
@@ -52,7 +52,19 @@ There are 2 webpages for the app:
 	5. The missing set of requirements are the ones with very low similarity score. Those will be used to form a list of querys for Coursera data.
 	6. Search the Coursera data with the queries and return list of courses with highest similarity for each query.
 
-* Possible future work
 
-*The App can be found at:
+## Files contained in this repo:
+
+
+
+## Possible future work
+	1. Extend the course recommendation to include edX and Udacity
+	2. Alter to help HR and recruiter with screening the candidates
+	3. Find a better approach to identify the real missing skills, maybe by adding a mini classifier to classify each word in the requirement to ensure to focus on “real skills and technologies”
+
+## Web App (can be found in app/*)
+The final product can be found at:  
 http://jerecowong.pythonanywhere.com/
+
+## Acknowledgements
+This project uses the Python packages including sklearn, nltk, TextBlob, pandas and flask; And most of all, support and guidance from Zipfian Academy.
