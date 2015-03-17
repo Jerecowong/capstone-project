@@ -20,10 +20,7 @@ I have the data stored in MongoDB. Each doc has course name and a short descript
 "links" : {
 },
 "shortName" : "perceptivehunting",
-"shortDescription" : "The rich history of wildlife management and recreational 
- hunting plays an important role in the evolving face of conservation. This 
- course will explore the ethics, science, and democracy of conservation, 
- hunting, and The Land Ethic in North America.",
+"shortDescription" : "The rich history of wildlife management and recreational hunting plays an important role in the evolving face of conservation. This course will explore the ethics, science, and democracy of conservation, hunting, and The Land Ethic in North America.",
 "id" : 2163,
 "name" : "The Land Ethic Reclaimed: Perceptive Hunting, Aldo Leopold, and Conservation"
 }
@@ -86,11 +83,12 @@ There are 2 web pages for the app:
 
 
 ## Possible future work
+
 	1. Extend the course recommendations to include edX and Udacity
 	2. Alter to help HR and recruiters with screening the candidates
-	3. Find a better approach to identify the real missing skills, maybe 
-	by adding a mini classifier to classify each word in the requirement 
-	to ensure focus on “real skills and technologies”
+	3. Find a better approach to identify the real missing skills, maybe by adding a 
+	   mini classifier to classify each word in the requirement to ensure focus on 
+	   the “real skills and technologies”
 
 ## Web App (can be found in webapp/*)
 The final product can be found at:  
